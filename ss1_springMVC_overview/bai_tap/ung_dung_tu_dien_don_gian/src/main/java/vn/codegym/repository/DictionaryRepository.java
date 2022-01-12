@@ -1,10 +1,13 @@
 package vn.codegym.repository;
 
 
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@Repository
 public class DictionaryRepository implements IDictionaryRepository{
    static Map<String,String> dictionary=new LinkedHashMap<>();
 

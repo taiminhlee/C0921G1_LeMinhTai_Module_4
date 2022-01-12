@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5dc4c31a-3c1c-4586-beed-dae36c992bbd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/hien_thi_gia_vi_voi-sandwich/src/main/java/vn/codegym/SandwichController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/hien_thi_gia_vi_voi-sandwich/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/hien_thi_gia_vi_voi-sandwich/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/hien_thi_gia_vi_voi-sandwich/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/may_tinh_ca_nhan/src/main/java/vn/codegym/controllers/CalculatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/may_tinh_ca_nhan/src/main/java/vn/codegym/model/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/may_tinh_ca_nhan/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/may_tinh_ca_nhan/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/bai_tap/may_tinh_ca_nhan/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_gradle/.idea/modules/kiem_tra_email_hop_le_su_dung_gradle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_gradle/src/main/java/vn/codegym/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_gradle/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_gradle/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_gradle/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_gradle/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_maven/kiem_tra_email_hop_le_su_dung_maven.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_maven/src/main/java/com/codegym/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_maven/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_maven/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_kiem_tra_email_hop_le_su_dung_maven/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_xem_gio_hien_tai_cua_cac_thanh_pho_su_dung_gradle/.idea/modules/xem_gio_hien_tai_cua_cac_thanh_pho_su_dung_gradle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_xem_gio_hien_tai_cua_cac_thanh_pho_su_dung_gradle/src/main/java/vn/codegym/TimeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_xem_gio_hien_tai_cua_cac_thanh_pho_su_dung_gradle/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_xem_gio_hien_tai_cua_cac_thanh_pho_su_dung_gradle/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/ung_dung_xem_gio_hien_tai_cua_cac_thanh_pho_su_dung_gradle/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/xem_gio_hien_tai_cua_cac_thanh_pho_dung_maven/src/main/java/com/codegym/controller/TimeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/xem_gio_hien_tai_cua_cac_thanh_pho_dung_maven/src/main/webapp/WEB-INF/configs/ spring-config-mvc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/xem_gio_hien_tai_cua_cac_thanh_pho_dung_maven/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/thuc_hanh/xem_gio_hien_tai_cua_cac_thanh_pho_dung_maven/time-zone-maven.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vn/codegym/controllers/MailboxController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vn/codegym/models/Mailbox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vn/codegym/repository/IMailboxRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vn/codegym/repository/MailboxRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/java/vn/codegym/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/java/vn/codegym/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/webapp/WEB-INF/views/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/webapp/WEB-INF/views/info.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/form_va_data_binding/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/java/vn/codegym/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/java/vn/codegym/model/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/java/vn/codegym/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/java/vn/codegym/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/webapp/WEB-INF/views/error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../thuc_hanh/ung_dung_login/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_chuyen_doi_tien_te/src/main/java/controllers/Convert.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_chuyen_doi_tien_te/src/main/java/controllers/ConvertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_chuyen_doi_tien_te/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_chuyen_doi_tien_te/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/classes/java/main/vn/codegym/controllers/DictionaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/classes/java/main/vn/codegym/controllers/DictionaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/classes/java/main/vn/codegym/repository/DictionaryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/classes/java/main/vn/codegym/repository/DictionaryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/classes/java/main/vn/codegym/service/DictionaryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/classes/java/main/vn/codegym/service/DictionaryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/libs/ung_dung_tu_dien_don_gian-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/build/libs/ung_dung_tu_dien_don_gian-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/src/main/java/vn/codegym/controllers/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/src/main/java/vn/codegym/controllers/DictionaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/src/main/java/vn/codegym/repository/DictionaryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/src/main/java/vn/codegym/repository/DictionaryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/src/main/java/vn/codegym/service/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/bai_tap/ung_dung_tu_dien_don_gian/src/main/java/vn/codegym/service/DictionaryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/thuc_hanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/thuc_hanh/customer-management" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="23ags5fgD1xhN5KJ4GFV9Yqltq8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\codegym\C0921G1-LeMinhTai-module-4\ss4_data_binding_&amp;_form\bai_tap\hom_thu_dien_tu\src\main\webapp" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5dc4c31a-3c1c-4586-beed-dae36c992bbd" name="Default Changelist" comment="" />
+      <created>1641977814374</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641977814374</updated>
+      <workItem from="1641977818568" duration="4593000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1641981880687">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1641981880687" />
+  </component>
+</project>

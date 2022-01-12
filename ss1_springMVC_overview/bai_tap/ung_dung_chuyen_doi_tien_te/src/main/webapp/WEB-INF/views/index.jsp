@@ -11,7 +11,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <form action="/convert">
+  <form action="/convert" method="post">
       <input type="text" name="dollars">
       <button type="submit">Convert</button>
   </form>
