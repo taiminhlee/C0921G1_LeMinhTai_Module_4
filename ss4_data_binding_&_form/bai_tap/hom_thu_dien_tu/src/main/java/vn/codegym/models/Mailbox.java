@@ -1,16 +1,18 @@
 package vn.codegym.models;
 
+import java.util.Objects;
+
 public class Mailbox {
     private String email;
    private String language;
    private String pageSize;
-   private String spamFilter;
+   private Boolean spamFilter;
    private String signature;
 
     public Mailbox() {
     }
 
-    public Mailbox(String email,String language, String pageSize, String spamFilter, String signature) {
+    public Mailbox(String email,String language, String pageSize, Boolean spamFilter, String signature) {
         this.email = email;
         this.language = language;
         this.pageSize = pageSize;
@@ -34,11 +36,11 @@ public class Mailbox {
         this.pageSize = pageSize;
     }
 
-    public String getSpamFilter() {
+    public Boolean getSpamFilter() {
         return spamFilter;
     }
 
-    public void setSpamFilter(String spamFilter) {
+    public void setSpamFilter(Boolean spamFilter) {
         this.spamFilter = spamFilter;
     }
 
@@ -56,6 +58,14 @@ public class Mailbox {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Mailbox)) return false;
+        Mailbox mailbox = (Mailbox) o;
+        return Objects.equals(email, mailbox.email);
     }
 
     @Override

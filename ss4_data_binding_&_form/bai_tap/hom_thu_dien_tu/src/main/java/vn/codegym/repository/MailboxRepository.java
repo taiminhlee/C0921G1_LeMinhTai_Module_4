@@ -11,10 +11,10 @@ public class MailboxRepository implements IMailboxRepository{
   static List<Mailbox> mailboxList =new ArrayList<>();
 
    static {
-        mailboxList.add(new Mailbox("minh@codegym.vn","Vietnamese","10","1","abc"));
-        mailboxList.add(new Mailbox("john@codegym.vn","English","25","0","abc"));
-        mailboxList.add(new Mailbox("bill@codegym.vn","Vietnamese","10","1","abc"));
-        mailboxList.add(new Mailbox("mike@codegym.vn","Japanese","5","0","abc"));
+        mailboxList.add(new Mailbox("minh@codegym.vn","Vietnamese","10",true,"abc"));
+        mailboxList.add(new Mailbox("john@codegym.vn","English","25",false,"abc"));
+        mailboxList.add(new Mailbox("bill@codegym.vn","Vietnamese","10",true,"abc"));
+        mailboxList.add(new Mailbox("mike@codegym.vn","Japanese","5",false,"abc"));
     }
 
     @Override

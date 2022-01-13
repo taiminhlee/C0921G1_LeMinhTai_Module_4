@@ -9,6 +9,11 @@
 <form:form modelAttribute="mailbox" action="/edit" method="post" >
     <table>
         <tr>
+            <td>
+             <form:hidden path="email" />
+            </td>
+        </tr>
+        <tr>
             <td>Languages</td>
             <td>
                 <form:select path="language">
@@ -27,7 +32,7 @@
         <tr>
             <td>Spam filter</td>
             <td>
-                <form:radiobutton path="spamFilter" value="1" label="Enable spam filter"/>
+                <form:checkbox path="spamFilter" label="Enable spam filter"/>
             </td>
         </tr>
         <tr>
