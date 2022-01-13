@@ -24,9 +24,9 @@ public class MailboxController {
         return new ModelAndView("/home","list",mailboxService.list());
     }
 
-    @GetMapping("/edit/{email}")
-    public String formEdit(@PathVariable String email, Model model){
-        Mailbox mailbox=mailboxService.findOne(email);
+    @GetMapping("/edit/{index}")
+    public String formEdit(@PathVariable int index, Model model){
+        Mailbox mailbox=mailboxService.findOne(index);
         List<String> language=new ArrayList<>();
         language.add("English");
         language.add("Vietnamese");

@@ -27,7 +27,8 @@ public class MailboxService implements IMailboxService{
    }
 
    @Override
-   public Mailbox findOne(String email) {
-      return mailboxRepository.findOne(email);
+   public Mailbox findOne(int index) {
+      return mailboxRepository.findOne(index);
    }
+
 }

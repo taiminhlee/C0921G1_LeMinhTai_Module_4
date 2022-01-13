@@ -7,11 +7,12 @@
 </head>
 <body>
 <h3>Mail Box</h3>
+<p>${smg}</p>
 <table border="1">
 <c:forEach items="${list}" var="items" varStatus="id">
     <tr>
         <td>${id.count}</td>
-        <td><a href="/edit/${items.email}">${items.email}</a></td>
+        <td><a href="/edit/${id.index}">${items.email}</a></td>
     </tr>
 </c:forEach>
 </table>

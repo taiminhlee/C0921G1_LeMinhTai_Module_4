@@ -24,26 +24,13 @@ public class MailboxRepository implements IMailboxRepository{
 
     @Override
     public void update(Mailbox mailbox) {
-        Mailbox mailbox1 =findOne(mailbox.getEmail());
-        mailbox1.setLanguage(mailbox.getLanguage());
-        mailbox1.setPageSize(mailbox.getPageSize());
-        mailbox1.setSpamFilter(mailbox.getSpamFilter());
-        mailbox1.setSignature(mailbox.getSignature());
+       int index=mailboxList.indexOf(mailbox);
+       mailboxList.set(index,mailbox);
     }
 
     @Override
-    public Mailbox findOne(String email) {
-        for (Mailbox mailbox:mailboxList) {
-            if (email.equals(mailbox.getEmail())){
-                return mailbox;
-            }
-        }
-        return null;
-    }
-
-    public static void main(String[] args) {
-        MailboxRepository mailboxRepository=new MailboxRepository();
-        System.out.println(mailboxRepository.findOne("minh@codegym.vn"));
-    }
+    public Mailbox findOne(int index) {
+      return mailboxList.get(index);
+   }
 }
 
