@@ -1,14 +1,16 @@
 package vn.codegym.repository;
 
+import org.springframework.stereotype.Repository;
 import vn.codegym.models.Mailbox;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MailboxRepository implements IMailboxRepository{
-   List<Mailbox> mailboxList =new ArrayList<>();
+  static List<Mailbox> mailboxList =new ArrayList<>();
 
-    {
+   static {
         mailboxList.add(new Mailbox("minh@codegym.vn","Vietnamese","10","1","abc"));
         mailboxList.add(new Mailbox("john@codegym.vn","English","25","0","abc"));
         mailboxList.add(new Mailbox("bill@codegym.vn","Vietnamese","10","1","abc"));
@@ -16,7 +18,7 @@ public class MailboxRepository implements IMailboxRepository{
     }
 
     @Override
-    public List<Mailbox> list() {
+    public  List<Mailbox> list() {
         return mailboxList;
     }
 
@@ -27,7 +29,6 @@ public class MailboxRepository implements IMailboxRepository{
         mailbox1.setPageSize(mailbox.getPageSize());
         mailbox1.setSpamFilter(mailbox.getSpamFilter());
         mailbox1.setSignature(mailbox.getSignature());
-
     }
 
     @Override
@@ -40,4 +41,9 @@ public class MailboxRepository implements IMailboxRepository{
         return null;
     }
 
+    public static void main(String[] args) {
+        MailboxRepository mailboxRepository=new MailboxRepository();
+        System.out.println(mailboxRepository.findOne("minh@codegym.vn"));
+    }
 }
+

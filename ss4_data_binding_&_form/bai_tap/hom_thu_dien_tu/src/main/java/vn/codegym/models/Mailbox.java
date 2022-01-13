@@ -5,7 +5,7 @@ public class Mailbox {
    private String language;
    private String pageSize;
    private String spamFilter;
-   private String Signature;
+   private String signature;
 
     public Mailbox() {
     }
@@ -15,7 +15,7 @@ public class Mailbox {
         this.language = language;
         this.pageSize = pageSize;
         this.spamFilter = spamFilter;
-        Signature = signature;
+        this.signature = signature;
     }
 
     public String getLanguage() {
@@ -43,11 +43,11 @@ public class Mailbox {
     }
 
     public String getSignature() {
-        return Signature;
+        return signature;
     }
 
     public void setSignature(String signature) {
-        Signature = signature;
+        this.signature = signature;
     }
 
     public String getEmail() {
@@ -56,5 +56,16 @@ public class Mailbox {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Mailbox{" +
+                "email='" + email + '\'' +
+                ", language='" + language + '\'' +
+                ", pageSize='" + pageSize + '\'' +
+                ", spamFilter='" + spamFilter + '\'' +
+                ", Signature='" + signature + '\'' +
+                '}';
     }
 }
