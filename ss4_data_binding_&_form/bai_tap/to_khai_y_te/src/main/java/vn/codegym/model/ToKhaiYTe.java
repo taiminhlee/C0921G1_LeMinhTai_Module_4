@@ -32,7 +32,12 @@ public class ToKhaiYTe {
     public ToKhaiYTe() {
     }
 
-    public ToKhaiYTe(String ten, String namSinh, String gioiTinh, String quocTinh, String cmnd, String thongTinDiLai, String soHieu, String soGhe, String ngayKhoiHanh, String ngayKetThuc, String diaDiemDaDen, String tinhThanhLienLac, String quanHuyenLienLac, String phuongXaLienLac, String diaChiNoiO, String sdt, String email, Boolean sot, Boolean ho, Boolean khoTho, Boolean dauHong, Boolean buonNon, Boolean tieuChay, Boolean xuatHuyetNgoaiDa, Boolean noiBanNgoaiDa, Boolean denTrangTrai, Boolean tiepXucGan) {
+    public ToKhaiYTe(String ten, String namSinh, String gioiTinh, String quocTinh, String cmnd,
+                     String thongTinDiLai, String soHieu, String soGhe, String ngayKhoiHanh,
+                     String ngayKetThuc, String diaDiemDaDen, String tinhThanhLienLac, String quanHuyenLienLac,
+                     String phuongXaLienLac, String diaChiNoiO, String sdt, String email, Boolean sot,
+                     Boolean ho, Boolean khoTho, Boolean dauHong, Boolean buonNon, Boolean tieuChay,
+                     Boolean xuatHuyetNgoaiDa, Boolean noiBanNgoaiDa, Boolean denTrangTrai, Boolean tiepXucGan) {
         this.ten = ten;
         this.namSinh = namSinh;
         this.gioiTinh = gioiTinh;

@@ -20,39 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dc4c31a-3c1c-4586-beed-dae36c992bbd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/java/vn/codegym/controller/ToKhaiYTeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/java/vn/codegym/model/ToKhaiYTe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/java/vn/codegym/repository/IToKhaiYTeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/java/vn/codegym/repository/ToKhaiYTeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/java/vn/codegym/service/IToKhaiYTeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/java/vn/codegym/service/ToKhaiYTeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/webapp/WEB-INF/views/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/webapp/WEB-INF/views/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../to_khai_y_te/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/java/com/codegym/configuration/AppConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/java/com/codegym/configuration/AppInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/java/com/codegym/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/java/com/codegym/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/java/com/codegym/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/java/com/codegym/service/ICustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/webapp/views/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/webapp/views/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/webapp/views/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/webapp/views/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/webapp/views/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/bai_tap/src/main/webapp/views/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/java/vn/codegym/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/java/vn/codegym/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/java/vn/codegym/service/IProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/java/vn/codegym/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/views/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/views/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/views/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/views/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/views/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../ss1_springMVC_overview/thuc_hanh/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss1_springMVC_overview/thuc_hanh/customer-management" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/vn/codegym/models/Mailbox.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/vn/codegym/models/Mailbox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/vn/codegym/repository/MailboxRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/vn/codegym/repository/MailboxRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/hom_thu_dien_tu-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/hom_thu_dien_tu-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/models/Mailbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/codegym/models/Mailbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/codegym/repository/MailboxRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/codegym/repository/MailboxRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +60,18 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -93,7 +102,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../C0921G1-LeMinhTai-module-3/ss11_MVC_models/bai_tap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ss3_views_&amp;_thymeleaf/thuc_hanh" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -238,7 +247,12 @@
       <workItem from="1641993368497" duration="2704000" />
       <workItem from="1642045784914" duration="1602000" />
       <workItem from="1642055555435" duration="13172000" />
-      <workItem from="1642074854182" duration="4717000" />
+      <workItem from="1642074854182" duration="5744000" />
+      <workItem from="1642130365500" duration="303000" />
+      <workItem from="1642133080238" duration="16000" />
+      <workItem from="1642133140939" duration="287000" />
+      <workItem from="1642135031635" duration="913000" />
+      <workItem from="1642143995678" duration="71000" />
     </task>
     <servers />
   </component>
@@ -266,10 +280,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1642064472945" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1642076257275">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1642144074254">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1642076257275" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1642144074253" />
     <state width="1323" height="177" key="GridCell.Tab.0.bottom" timestamp="1642069014873">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -334,13 +348,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="905" height="291" key="GridCell.Tab.3.right/0.0.1366.728@0.0.1366.728" timestamp="1642067010450" />
-    <state x="65" y="0" key="new project wizard" timestamp="1642076258328">
+    <state x="65" y="0" key="new project wizard" timestamp="1642130695010">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1642076258328" />
+    <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1642130695010" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1641995338114">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1641995338114" />
+    <state x="346" y="49" key="search.everywhere.popup" timestamp="1642136114098">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1642136114098" />
   </component>
 </project>
