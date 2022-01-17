@@ -1,7 +1,9 @@
 package vn.codegym.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.codegym.model.Product;
+import vn.codegym.repository.IProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,37 +11,32 @@ import java.util.List;
 
 @Service
 public class ProductService implements IProductService{
-    List<Product> productList=new ArrayList<>();
 
-    {
-        productList.add(new Product("Iphone 11","1200","3","Apple"));
-        productList.add(new Product("Samsung a52","1000","8","Samsung"));
-        productList.add(new Product("Nokia","2200","10","Nokia"));
-    }
+    @Autowired
+    private IProductRepository productRepository;
 
     @Override
     public List<Product> findAll() {
-        return productList;
+        return productRepository.findAll();
     }
 
     @Override
     public void save(Product product) {
-        productList.add(product);
+        productRepository.save(product);
     }
 
     @Override
     public Product findByIndex(int index) {
-        return productList.get(index);
+        return productRepository.findByIndex(index);
     }
 
     @Override
     public void update( Product product) {
-        int index= productList.indexOf(product);
-        productList.set(index,product);
+       productRepository.update(product);
     }
 
     @Override
     public void remove(Product product) {
-        productList.remove(product);
+        productRepository.remove(product);
     }
 }
