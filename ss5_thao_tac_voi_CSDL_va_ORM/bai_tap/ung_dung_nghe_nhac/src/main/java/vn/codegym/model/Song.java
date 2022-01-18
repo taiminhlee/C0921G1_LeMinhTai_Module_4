@@ -7,26 +7,28 @@ import javax.persistence.*;
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
     private String singer;
     private String type;
+    private String url;
 
     public Song() {
     }
 
-    public Song( String name, String single, String type) {
+    public Song( String name, String single, String type, String url) {
         this.name = name;
         this.singer = single;
         this.type = type;
+        this.url=url;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,5 +54,13 @@ public class Song {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

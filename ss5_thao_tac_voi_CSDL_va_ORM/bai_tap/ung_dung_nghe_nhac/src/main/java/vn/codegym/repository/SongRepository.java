@@ -19,6 +19,7 @@ public class SongRepository implements ISongRepository{
             session = ConnectionUntil.sessionFactory.openSession();
             transaction = session.beginTransaction();
            session.save(song);
+
            transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,11 +55,16 @@ public class SongRepository implements ISongRepository{
         try {
             session = ConnectionUntil.sessionFactory.openSession();
             transaction = session.beginTransaction();
-            Song origin = findOne(song.getId());
-            origin.setName(song.getName());
-            origin.setSinger(song.getSinger());
-            origin.setType(song.getType());
-            session.merge(origin);
+            if (song.getId()==null){
+                create(song);
+            }else {
+                Song origin = findOne(song.getId());
+                origin.setName(song.getName());
+                origin.setSinger(song.getSinger());
+                origin.setType(song.getType());
+                session.saveOrUpdate(origin);
+            }
+
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,12 +81,18 @@ public class SongRepository implements ISongRepository{
 
     @Override
     public void delete(Song song) {
+//        String queryStr = "delete from Song WHERE id = :id";
+//        TypedQuery<Song> query = ConnectionUntil.entityManager.createQuery(queryStr, Song.class);
+//        query.setParameter("id", song.getId());
         Session session = null;
         Transaction transaction = null;
         try {
             session = ConnectionUntil.sessionFactory.openSession();
             transaction = session.beginTransaction();
-          session.remove(findOne(song.getId()));
+
+            session.remove(findOne(song.getId()));
+
+            transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
@@ -94,7 +106,7 @@ public class SongRepository implements ISongRepository{
     }
 
     @Override
-    public Song findOne(int id) {
+    public Song findOne(Integer id) {
         String queryStr = "SELECT s FROM Song AS s WHERE s.id = :id";
         TypedQuery<Song> query = ConnectionUntil.entityManager.createQuery(queryStr, Song.class);
         query.setParameter("id", id);

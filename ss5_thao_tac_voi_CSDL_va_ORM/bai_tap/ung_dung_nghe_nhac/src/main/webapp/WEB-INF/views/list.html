@@ -25,7 +25,7 @@
     <tbody>
     <tr th:each="c : ${songList}">
         <td th:text="${c.id}"></td>
-        <td th:text="${c.name}"></td>
+        <td ><a th:href="@{${c.getUrl()}}"  th:text="${c.name}"></a></td>
         <td th:text="${c.singer}"></td>
         <td th:text="${c.type}"></td>
         <td>

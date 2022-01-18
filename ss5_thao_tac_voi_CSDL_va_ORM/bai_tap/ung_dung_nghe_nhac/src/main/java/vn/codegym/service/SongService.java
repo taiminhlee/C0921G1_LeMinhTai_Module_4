@@ -24,16 +24,16 @@ public class SongService implements ISongService{
 
     @Override
     public void edit(Song song) {
-
+        songRepository.edit(song);
     }
 
     @Override
-    public boolean delete(Song song) {
-       return songRepository.delete(song);
+    public void delete(Song song) {
+        songRepository.delete(song);
     }
 
     @Override
-    public Song findOne(int id) {
+    public Song findOne(Integer id) {
         return songRepository.findOne(id);
     }
 }
