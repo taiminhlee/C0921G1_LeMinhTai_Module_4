@@ -58,7 +58,7 @@ public class SongRepository implements ISongRepository{
             origin.setName(song.getName());
             origin.setSinger(song.getSinger());
             origin.setType(song.getType());
-            session.saveOrUpdate(origin);
+            session.merge(origin);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,9 +75,22 @@ public class SongRepository implements ISongRepository{
 
     @Override
     public void delete(Song song) {
-        String queryStr = "delete from Song  WHERE id = :id";
-        TypedQuery<Song> query = ConnectionUntil.entityManager.createQuery(queryStr, Song.class);
-        query.setParameter("id", song.getId());
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = ConnectionUntil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+          session.remove(findOne(song.getId()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
     }
 
     @Override

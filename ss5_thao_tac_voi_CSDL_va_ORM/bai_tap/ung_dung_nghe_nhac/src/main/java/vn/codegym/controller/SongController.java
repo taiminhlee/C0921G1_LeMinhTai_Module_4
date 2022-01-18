@@ -41,13 +41,24 @@ public class SongController {
 
     @GetMapping("/delete/{id}")
     public ModelAndView showDelete(@PathVariable int id){
-        return new ModelAndView("create","song",songService.findOne(id));
+        return new ModelAndView("delete","song",songService.findOne(id));
     }
 
     @PostMapping("/delete")
     public String delete(@ModelAttribute Song song, RedirectAttributes redirectAttributes){
         songService.delete(song);
         redirectAttributes.addFlashAttribute("smg","Delete success");
+        return "redirect:/list";
+    }
+    @GetMapping("/edit/{id}")
+    public ModelAndView showEdit(@PathVariable int id){
+        return new ModelAndView("edit","song",songService.findOne(id));
+    }
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute Song song, RedirectAttributes redirectAttributes){
+        songService.edit(song);
+        redirectAttributes.addFlashAttribute("smg","Edit success");
         return "redirect:/list";
     }
 }
