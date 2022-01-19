@@ -38,9 +38,13 @@ public class BlogController {
         }else if (!categoryId.isPresent()){
             model.addAttribute("name",name.get());
             model.addAttribute("blog",blogService.findByNameContaining(name.get(), pageable));
+        }else {
+            model.addAttribute("name",name.get());
+            model.addAttribute("categoryId",categoryId.get());
+            model.addAttribute("blog",blogService.findByNameContainingAndCategoryId(name.get(),
+                    categoryId.get(),pageable));
+
         }
-
-
         return "list";
     }
 
