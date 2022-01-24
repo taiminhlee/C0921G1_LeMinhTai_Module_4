@@ -11,16 +11,16 @@ public class SongDto  {
     private Integer id;
     @NotBlank(message = "empty!!!")
     @Size(max = 800, message = "must not exceed 800 characters")
-    @Pattern(regexp = "^[a-zA-Z0-9\\ ]+$",message = "wrong format")
+    @Pattern(regexp = "^[\\p{Lu}\\p{Ll}\\s0-9]+$",message = "wrong format")
     private String name;
 
     @NotBlank(message = "empty!!!")
     @Size(max = 300, message = "must not exceed 300 characters")
-    @Pattern(regexp = "^[a-zA-Z0-9\\ ]+$",message = "wrong format")
+    @Pattern(regexp = "^[\\p{Lu}\\p{Ll}\\s0-9]+$",message = "wrong format")
     private String singer;
 
     @Size(max = 1000, message = "must not exceed 1000 characters")
-    @Pattern(regexp = "^[a-zA-Z0-9,]+$",message = "wrong format")
+    @Pattern(regexp = "^[\\p{Lu}\\p{Ll}\\s0-9\\,]+$",message = "wrong format")
     private String type;
     private String url;
 
