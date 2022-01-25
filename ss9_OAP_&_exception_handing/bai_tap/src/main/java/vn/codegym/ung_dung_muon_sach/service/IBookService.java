@@ -10,5 +10,5 @@ public interface IBookService {
     Page<Book> findAll(Pageable pageable);
     Optional<Book> findById(Long id);
     void save(Book book);
-    void rent(Long id);
+    void giveBack(Long id);
 }

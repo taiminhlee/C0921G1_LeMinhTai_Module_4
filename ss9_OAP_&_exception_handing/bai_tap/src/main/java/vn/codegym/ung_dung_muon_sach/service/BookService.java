@@ -30,7 +30,7 @@ public class BookService implements IBookService{
     }
 
     @Override
-    public void rent(Long id) {
-//        bookRepository.rent(id);
+    public void giveBack(Long id) {
+        bookRepository.giveBack(id);
     }
 }

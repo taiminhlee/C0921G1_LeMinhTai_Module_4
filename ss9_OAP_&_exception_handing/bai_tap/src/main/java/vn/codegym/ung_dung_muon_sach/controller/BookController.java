@@ -5,11 +5,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.ung_dung_muon_sach.model.Book;
 import vn.codegym.ung_dung_muon_sach.model.CodeBook;
 import vn.codegym.ung_dung_muon_sach.service.IBookService;
@@ -34,16 +32,32 @@ public class BookController {
     }
 
     @PostMapping("/rent")
-    public String rent(@ModelAttribute Book book, Model model){
+    public String rent(@ModelAttribute Book book, Model model) throws Exception {
         if (book.getQuantity()>0){
-            double random=Math.random()*99999+10000;
-            CodeBook codeBook=new CodeBook((long) random, book);
-            model.addAttribute("code","book rental code is: " + (int)random);
+            model.addAttribute("code","book rental code is: " +  codeBookService.save(book));
             book.setQuantity(book.getQuantity()-1);
-            codeBookService.save(codeBook);
             bookService.save(book);
             return "/view";
+        }else {
+            throw new Exception();
         }
-        return "/view";
     }
+
+    @GetMapping("/giveBack")
+    public String giveBack(Long codeBook, RedirectAttributes redirectAttributes){
+        CodeBook codeBook1=codeBookService.findByCodeBook(codeBook);
+        if (codeBook1 !=null){
+            codeBookService.delete(codeBook);
+            bookService.giveBack(codeBook1.getBook().getId());
+            redirectAttributes.addFlashAttribute("msg","returned the book");
+        }else {
+            redirectAttributes.addFlashAttribute("smg","not found");
+        }
+        return "redirect:/list";
+    }
+
+//    @ExceptionHandler(value = Exception.class)
+//    public String error(){
+//        return "/error";
+//    }
 }

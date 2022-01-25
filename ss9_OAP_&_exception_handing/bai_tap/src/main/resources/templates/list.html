@@ -5,6 +5,20 @@
     <title>Customer List</title>
 </head>
 <body>
+<div class="container">
+    <div>
+        <form th:action="@{/giveBack}">
+            <input  type="text" placeholder="Code Book for give back" th:name="codeBook">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+
+</div>
 <table id="book">
     <caption style="color: rosybrown">Book List</caption>
     <thead>

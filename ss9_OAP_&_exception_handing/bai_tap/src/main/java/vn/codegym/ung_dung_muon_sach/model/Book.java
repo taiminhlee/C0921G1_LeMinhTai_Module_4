@@ -2,6 +2,7 @@ package vn.codegym.ung_dung_muon_sach.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Book {
@@ -14,12 +15,12 @@ public class Book {
     private String author;
 
     @OneToMany(mappedBy = "book")
-    private List<CodeBook> codeBooks;
+    private Set<CodeBook> codeBooks;
 
     public Book() {
     }
 
-    public Book(String name, Long quantity, String type, String author, List<CodeBook> codeBooks) {
+    public Book(String name, Long quantity, String type, String author, Set<CodeBook> codeBooks) {
         this.name = name;
         this.quantity = quantity;
         this.type = type;
@@ -67,11 +68,11 @@ public class Book {
         this.author = author;
     }
 
-    public List<CodeBook> getCodeBooks() {
+    public Set<CodeBook> getCodeBooks() {
         return codeBooks;
     }
 
-    public void setCodeBooks(List<CodeBook> codeBooks) {
+    public void setCodeBooks(Set<CodeBook> codeBooks) {
         this.codeBooks = codeBooks;
     }
 }
