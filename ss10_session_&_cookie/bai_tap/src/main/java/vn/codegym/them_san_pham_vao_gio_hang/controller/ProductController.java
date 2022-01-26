@@ -2,8 +2,10 @@ package vn.codegym.them_san_pham_vao_gio_hang.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.them_san_pham_vao_gio_hang.model.Cart;
 import vn.codegym.them_san_pham_vao_gio_hang.model.Product;
 import vn.codegym.them_san_pham_vao_gio_hang.service.IProductService;
@@ -29,20 +31,29 @@ public class ProductController {
     }
 
     @GetMapping("/add/{id}")
-    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
-        Optional<Product> productOptional = productService.findById(id);
-        if (!productOptional.isPresent()) {
+    public String addToCart(@PathVariable Long id, @SessionAttribute Cart cart,
+                            @RequestParam(value = "action", required = false, defaultValue = "") String action,
+                            Model model) {
+        Optional<Product> product=productService.findById(id);
+        if (!product.isPresent()) {
             return "/error.404";
         }
         if (action.equals("+")) {
-            cart.addProduct(productOptional.get());
+            cart.addProduct(product.get());
             return "redirect:/shopping-cart";
         }
         if (action.equals("-")) {
-            cart.decreaseProduct(productOptional.get());
+            cart.decreaseProduct(product.get());
             return "redirect:/shopping-cart";
         }
-        cart.addProduct(productOptional.get());
-        return "redirect:/shop";
+        cart.addProduct(product.get());
+        model.addAttribute("smg","added to cart");
+        return "redirect:/view/"+id;
+    }
+
+    @GetMapping("/view/{id}")
+    public String detail(@PathVariable Long id, Model model){
+        model.addAttribute("product",productService.findById(id).get());
+        return "/view";
     }
 }
