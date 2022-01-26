@@ -8,5 +8,5 @@ import vn.codegym.blog.model.Blog;
 
 @Repository
 public interface IBlogRepository extends JpaRepository<Blog,Integer> {
-
+    Iterable<Blog> findByCategoryId(Integer categoryId);
 }

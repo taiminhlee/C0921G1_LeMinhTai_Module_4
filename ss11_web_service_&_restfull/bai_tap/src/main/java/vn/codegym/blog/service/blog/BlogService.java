@@ -25,4 +25,9 @@ public class BlogService implements IBlogService {
     public Optional findById(Integer id) {
         return blogRepository.findById(id);
     }
+
+    @Override
+    public Iterable<Blog> findByCategoryId(Integer categoryId) {
+        return blogRepository.findByCategoryId(categoryId);
+    }
 }

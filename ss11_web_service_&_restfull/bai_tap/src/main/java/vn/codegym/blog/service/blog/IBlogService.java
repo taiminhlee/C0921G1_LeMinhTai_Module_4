@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface IBlogService<T> {
     Iterable<T> findAll();
     Optional<T> findById(Integer id);
-
+    Iterable<Blog> findByCategoryId(Integer categoryId);
 }
