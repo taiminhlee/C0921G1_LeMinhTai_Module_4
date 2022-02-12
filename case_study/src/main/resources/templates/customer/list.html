@@ -47,7 +47,36 @@
         <td th:if="${c.customerGender.equals('0')}" th:text="Female"></td>
         <td>
             <a th:href="@{/customer/edit/{id}(id=${c.customerId})}">Edit</a>
-            <a data-bs-target="#exampleModal" data-bs-toggle="modal" class="text-primary">Delete</a>
+        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    th:attr="data-bs-target='#cusId'+${c.customerId}">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" th:id="'cusId' + ${c.customerId}" tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">CONFIRM DELETE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Confirm delete <span class="text-warning" th:text="${c.customerName}"></span> ?
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a type="button" class="btn btn-danger text-decoration-none"
+                               th:href="@{/customer/delete/{id}(id=${c.customerId})}"
+                            >Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </td>
     </tr>
     </tbody>
@@ -60,27 +89,4 @@
        th:if="${customer.hasNext()}">Next</a>
 </div>
 </body>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 </html>

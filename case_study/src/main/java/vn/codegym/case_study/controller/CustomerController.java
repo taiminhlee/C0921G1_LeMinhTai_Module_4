@@ -51,8 +51,8 @@ public class CustomerController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEdit(Model model, @PathVariable Long id){
-        model.addAttribute("customer",customerService.findById(id));
+    public String showEdit(Model model, @PathVariable String id){
+        model.addAttribute("customer",customerService.findById(id).get());
         model.addAttribute("customerType",customerTypeService.findAll());
         return "customer/edit";
     }
@@ -84,5 +84,12 @@ public class CustomerController {
             redirectAttributes.addFlashAttribute("smg","Create Success");
             return "redirect:/customer";
         }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable String id, RedirectAttributes redirectAttributes){
+        customerService.delete(id);
+        redirectAttributes.addFlashAttribute("smg","Delete success");
+        return "redirect:/customer";
     }
 }

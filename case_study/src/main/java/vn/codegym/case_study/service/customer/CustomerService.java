@@ -40,13 +40,13 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
         customerRepository.delete(id);
     }
 
     @Override
-    public Optional<Customer> findById(Long id) {
-        return customerRepository.findById(id);
+    public Optional<Customer> findById(String id) {
+        return customerRepository.findByCustomerId(id);
     }
 
 

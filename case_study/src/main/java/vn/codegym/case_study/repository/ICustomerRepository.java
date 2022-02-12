@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import vn.codegym.case_study.model.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer,Long> {
@@ -24,8 +25,7 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
      @Query(value="update customer\n" +
              "set customer_status=0\n" +
              "where customer_id = :id;", nativeQuery=true)
-     void delete(@Param("id") Long id);
+     void delete(@Param("id") String id);
 
-     @Query(value="select customer_id from customer", nativeQuery=true)
-     List<String> customerIdList();
+     Optional<Customer> findByCustomerId(String customerId);
 }
