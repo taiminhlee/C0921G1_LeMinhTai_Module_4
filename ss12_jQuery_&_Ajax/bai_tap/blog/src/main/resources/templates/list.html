@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+</head>
+<body>
+<div>
+        <input id="search" type="text">
+</div>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+    <a href="/create">Create new blog</a>
+</div>
+
+<table id="table">
+    <caption style="color: rosybrown">Blog List</caption>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Blogger</th>
+        <th>Category</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+</body>
+
+<script type="text/javascript">
+    //search
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            let input = $(this).val();
+            $("#table").empty();
+
+            $.ajax({
+                url: "/blog/search?name=" + input,
+                type: "GET",
+                // dataType: "JSON",
+                success: function (data) {
+                    let tr=[];
+                    tr.push('<tr>')
+                    tr.push('<th>Id</th>')
+                    tr.push('<th>Name</th>')
+                    tr.push('<th>Blogger</th>')
+                    tr.push('<th>Category</th>')
+                    tr.push('<th>View</th>')
+                    tr.push('</tr>')
+                    for(let i=0; i<data.length; i++){
+                        tr.push('<tr>');
+                        tr.push('<td>' + data[i].id + '</td>')
+                        tr.push('<td>' + data[i].name + '</td>')
+                        tr.push('<td>' + data[i].blogger + '</td>')
+                        tr.push('<td>' + data[i].category + '</td>')
+                        tr.push("<td><a>" + data[i].url + '</a></td>')
+                        tr.push('</tr>');
+                    }
+                    $('#table').append($(tr.join('')))
+                }
+            })
+        })
+    })
+    //load
+    $(document).ready(function () {
+            $.ajax({
+                url: "localhost:8080/blog/list" ,
+                type: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    let tr=[];
+                    tr.push('<tr>')
+                    tr.push('<th>Id</th>')
+                    tr.push('<th>Name</th>')
+                    tr.push('<th>Blogger</th>')
+                    tr.push('<th>Category</th>')
+                    tr.push('<th>View</th>')
+                    tr.push('</tr>')
+                    for(let i=0; i<2; i++){
+                        tr.push('<tr>');
+                        tr.push('<td>' + data[i].id + '</td>')
+                        tr.push('<td>' + data[i].name + '</td>')
+                        tr.push('<td>' + data[i].blogger + '</td>')
+                        tr.push('<td>' + data[i].category + '</td>')
+                        tr.push("<td><a>" + data[i].url + '</a></td>')
+                        tr.push('</tr>');
+                    }
+                    $('#table').append($(tr.join('')))
+                }
+            })
+    })
+</script>
+</html>

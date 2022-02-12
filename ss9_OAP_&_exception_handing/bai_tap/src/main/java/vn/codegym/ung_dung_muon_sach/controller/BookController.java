@@ -34,7 +34,7 @@ public class BookController {
     @PostMapping("/rent")
     public String rent(@ModelAttribute Book book, Model model) throws Exception {
         if (book.getQuantity()>0){
-            model.addAttribute("code","book rental code is: " +  codeBookService.save(book));
+            model.addAttribute("code","book rental code is: " +  codeBookService.saveCodeBook(book));
             book.setQuantity(book.getQuantity()-1);
             bookService.save(book);
             return "/view";
@@ -56,8 +56,8 @@ public class BookController {
         return "redirect:/list";
     }
 
-//    @ExceptionHandler(value = Exception.class)
-//    public String error(){
-//        return "/error";
-//    }
+    @ExceptionHandler(value = Exception.class)
+    public String error(){
+        return "/error";
+    }
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/layout :: header"></div>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+
+</div>
+<div>
+    <form action="/customer">
+        <input name="name" type="text">
+        <select name="customerTypeId">
+            <option disabled selected>Choose Category</option>
+            <option th:each="item : ${customerType}" th:value="${item.customerTypeId}" th:text="${item.customerTypeName}"></option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+</div>
+<a href="/customer/create">Create new blog</a>
+<table id="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Customer Type</th>
+        <th>Address</th>
+        <th>Birthday</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${customer}">
+        <td th:text="${c.customerId}"></td>
+        <td  th:text="${c.customerName}"></td>
+        <td th:text="${c.customerType.customerTypeName}"></td>
+        <td th:text="${c.customerAddress}"></td>
+        <td th:text="${c.customerBirthday}"></td>
+        <td th:if="${c.customerGender.equals('1')}" th:text="Male"></td>
+        <td th:if="${c.customerGender.equals('0')}" th:text="Female"></td>
+        <td>
+            <a th:href="@{/customer/edit/{id}(id=${c.customerId})}">Edit</a>
+            <a data-bs-target="#exampleModal" data-bs-toggle="modal" class="text-primary">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/customer'(page=${customer.number - 1}, name=${name}, customerTypeId=${customerTypeId})}"
+       th:if="${customer.hasPrevious()}">Previous</a>
+    <span th:text="${customer.number + 1}"></span>/<span th:text="${customer.totalPages}"></span>
+    <a th:href="@{'/customer'(page=${customer.number + 1}, name=${name}, customerTypeId=${customerTypeId})}"
+       th:if="${customer.hasNext()}">Next</a>
+</div>
+</body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

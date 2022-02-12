@@ -88,5 +88,4 @@ public class BlogController {
         redirectAttributes.addFlashAttribute("smg","edit success");
         return "redirect:/list";
     }
-
 }

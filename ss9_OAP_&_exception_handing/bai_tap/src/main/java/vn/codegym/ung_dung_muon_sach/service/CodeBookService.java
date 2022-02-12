@@ -14,7 +14,7 @@ public class CodeBookService implements ICodeBookService{
     ICodeBookRepository codeBookRepository;
 
     @Override
-    public int save(Book book) {
+    public int saveCodeBook(Book book) {
         double random=Math.random()*99999+10000;
         CodeBook codeBook=new CodeBook((long) random, book);
         codeBookRepository.save(codeBook);
