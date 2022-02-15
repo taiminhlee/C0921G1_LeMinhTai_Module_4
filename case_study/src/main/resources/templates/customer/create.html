@@ -11,6 +11,7 @@
             <label>Id</label>
             <input type="text" th:field="*{customerId}"/>
             <p th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></p>
+            <p th:if="${smg}" th:text="${smg}"></p>
         </div>
         <div>
             <label>Name</label>
@@ -44,6 +45,7 @@
         <div>
             <label>Address</label>
             <input type="text" th:field="*{customerAddress}"/>
+            <input type="hidden" th:field="*{customerStatus}" th:value="1"/>
         </div>
         <div>
             <label>Customer Type</label>

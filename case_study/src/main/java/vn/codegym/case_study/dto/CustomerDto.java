@@ -34,11 +34,12 @@ public class CustomerDto implements Validator{
     @Email(message = "Email invalidate ")
     private String customerEmail;
     private String customerAddress;
+    private String customerStatus;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(String customerId, CustomerType customerType, String customerName, String customerBirthday, String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
+    public CustomerDto(String customerId, CustomerType customerType, String customerName, String customerBirthday, String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress, String customerStatus) {
         this.customerId = customerId;
         this.customerType = customerType;
         this.customerName = customerName;
@@ -48,7 +49,16 @@ public class CustomerDto implements Validator{
         this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
+        this.customerStatus = customerStatus;
 
+    }
+
+    public String getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(String customerStatus) {
+        this.customerStatus = customerStatus;
     }
 
     public String getCustomerId() {

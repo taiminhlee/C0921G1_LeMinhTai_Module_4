@@ -1,27 +1,31 @@
 package vn.codegym.case_study.model;
 
-public class Division {
-    private int divisionId;
-    private String divisionName;
+import javax.persistence.*;
+import java.util.List;
 
-    public Division(String divisionName) {
-        this.divisionName = divisionName;
+@Entity
+public class Division {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long divisionId;
+    private String divisionName;
+    @OneToMany(mappedBy = "employeeId")
+    private List<Employee> employees;
+
+    public Division() {
     }
 
-    public Division(int divisionId, String divisionName) {
+    public Division(Long divisionId, String divisionName, List<Employee> employees) {
         this.divisionId = divisionId;
         this.divisionName = divisionName;
+        this.employees = employees;
     }
 
-    public Division(int division) {
-        this.divisionId=division;
-    }
-
-    public int getDivisionId() {
+    public Long getDivisionId() {
         return divisionId;
     }
 
-    public void setDivisionId(int divisionId) {
+    public void setDivisionId(Long divisionId) {
         this.divisionId = divisionId;
     }
 
@@ -33,11 +37,11 @@ public class Division {
         this.divisionName = divisionName;
     }
 
-    @Override
-    public String toString() {
-        return "Division{" +
-                "divisionId=" + divisionId +
-                ", divisionName='" + divisionName + '\'' +
-                '}';
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title th:text="#{title}"></title>
+</head>
+<body>
+<table id="table">
+    <caption style="color: rosybrown" th:text="#{caption}"></caption>
+    <thead>
+    <tr>
+        <th th:text="#{id}"></th>
+        <th th:text="#{name}"></th>
+        <th th:text="#{age}"></th>
+        <th th:text="#{address}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="customer: ${customers}">
+        <tr>
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.age}"></td>
+            <td th:text="${customer.address}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+Language: <a href="?lang=en">English</a> | <a href="?lang=vi">Tiếng Việt</a>
+</body>
+</html>

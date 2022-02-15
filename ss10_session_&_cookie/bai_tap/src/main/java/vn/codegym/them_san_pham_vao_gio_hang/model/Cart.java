@@ -45,6 +45,10 @@ public class Cart {
         }
     }
 
+    public void removeProduct(Product product){
+        products.remove(product);
+    }
+
     public void decreaseProduct(Product product){
         if (products.get(product)==0){
            products.remove(product,0);

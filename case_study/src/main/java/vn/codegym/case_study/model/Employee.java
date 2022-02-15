@@ -1,22 +1,39 @@
 package vn.codegym.case_study.model;
 
+import javax.persistence.*;
 
+@Entity
 public class Employee {
-    private int employeeId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long employeeId;
     private String employeeName;
     private String employeeBirthday;
     private String employeeIdCard;
-    private double employeeSalary;
+    private Double employeeSalary;
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id",referencedColumnName = "positionId")
     private Position position;
+
+    @ManyToOne
+    @JoinColumn(name = "education_degree_id",referencedColumnName = "educationDegreeId")
     private EducationDegree educationDegree;
+
+    @ManyToOne
+    @JoinColumn(name = "division_id",referencedColumnName = "divisionId")
     private Division division;
+
+    @OneToOne
+    @JoinColumn(name = "user_name",referencedColumnName = "userName")
     private User user;
+    private String employeeStatus;
 
 
-    public Employee(String employeeName, String employeeBirthday, String employeeIdCard, double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Position position, EducationDegree educationDegree, Division division, User user) {
+    public Employee(String employeeName, String employeeBirthday, String employeeIdCard, Double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Position position, EducationDegree educationDegree, Division division, User user, String employeeStatus) {
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
         this.employeeIdCard = employeeIdCard;
@@ -28,22 +45,26 @@ public class Employee {
         this.educationDegree = educationDegree;
         this.division = division;
         this.user = user;
+        this.employeeStatus =employeeStatus;
     }
 
     public Employee() {
     }
 
-
-
-    public Employee(int employeeId) {
-        this.employeeId=employeeId;
+    public String getEmployeeStatus() {
+        return employeeStatus;
     }
 
-    public int getEmployeeId() {
+    public void setEmployeeStatus(String employeeStatus) {
+        this.employeeStatus = employeeStatus;
+    }
+
+
+    public Long getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -71,11 +92,11 @@ public class Employee {
         this.employeeIdCard = employeeIdCard;
     }
 
-    public double getEmployeeSalary() {
+    public Double getEmployeeSalary() {
         return employeeSalary;
     }
 
-    public void setEmployeeSalary(double employeeSalary) {
+    public void setEmployeeSalary(Double employeeSalary) {
         this.employeeSalary = employeeSalary;
     }
 
@@ -133,23 +154,5 @@ public class Employee {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeBirthday='" + employeeBirthday + '\'' +
-                ", employeeIdCard='" + employeeIdCard + '\'' +
-                ", employeeSalary=" + employeeSalary +
-                ", employeePhone='" + employeePhone + '\'' +
-                ", employeeEmail='" + employeeEmail + '\'' +
-                ", employeeAddress='" + employeeAddress + '\'' +
-                ", position=" + position +
-                ", educationDegree=" + educationDegree +
-                ", division=" + division +
-                ", user=" + user +
-                '}';
     }
 }

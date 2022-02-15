@@ -1,29 +1,30 @@
 package vn.codegym.case_study.model;
 
-public class EducationDegree {
-    private int educationDegreeId;
-    private String educationDegreeName;
+import javax.persistence.*;
+import java.util.List;
 
-    public EducationDegree(String educationDegreeName) {
-        this.educationDegreeName = educationDegreeName;
+@Entity
+public class EducationDegree {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long educationDegreeId;
+    private String educationDegreeName;
+    @OneToMany(mappedBy = "employeeId")
+    private List<Employee> employees;
+
+    public EducationDegree() {
     }
 
-    public EducationDegree(int educationDegreeId, String educationDegreeName) {
+    public EducationDegree(Long educationDegreeId, String educationDegreeName, List<Employee> employees) {
         this.educationDegreeId = educationDegreeId;
         this.educationDegreeName = educationDegreeName;
+        this.employees = employees;
     }
 
-    public EducationDegree(int educationDegree) {
-        this.educationDegreeId=educationDegree;
-    }
-
-    public int getEducationDegreeId() {
+    public Long getEducationDegreeId() {
         return educationDegreeId;
     }
 
-    public void setEducationDegreeId(int educationDegreeId) {
-        this.educationDegreeId = educationDegreeId;
-    }
 
     public String getEducationDegreeName() {
         return educationDegreeName;
@@ -33,11 +34,15 @@ public class EducationDegree {
         this.educationDegreeName = educationDegreeName;
     }
 
-    @Override
-    public String toString() {
-        return "EducationDegree{" +
-                "educationDegreeId=" + educationDegreeId +
-                ", educationDegreeName='" + educationDegreeName + '\'' +
-                '}';
+    public void setEducationDegreeId(Long educationDegreeId) {
+        this.educationDegreeId = educationDegreeId;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

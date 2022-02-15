@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{dashboard.title}"></title>
+    <title th:if="${smg}" th:text="#{error.title}"></title>
+</head>
+<body>
+<h1 th:text="#{dashboard.heading}"></h1>
+<h1 th:if="${smg}" th:text="#{error.heading}"></h1>
+<span th:text="#{dashboard.greeting}"></span> <span th:text="${user.userName}"></span>
+</body>
+</html>

@@ -13,6 +13,7 @@ public interface ICustomerService {
     Page<Customer> findByCustomerType_CustomerTypeId(Long customerTypeId, Pageable pageable);
     Page<Customer> findByCustomerNameContainingAndCustomerType_CustomerTypeId(String name, Long customerTypeId, Pageable pageable);
     void save(Customer customer);
-    void delete(String id);
+    void delete(Customer customer);
     Optional<Customer> findById(String id);
+    Iterable<String> listIdCustomer();
 }

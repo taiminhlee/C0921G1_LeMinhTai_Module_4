@@ -40,13 +40,19 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void delete(String id) {
-        customerRepository.delete(id);
+    public void delete(Customer customer) {
+        customer.setCustomerStatus("0");
+        customerRepository.save(customer);
     }
 
     @Override
     public Optional<Customer> findById(String id) {
         return customerRepository.findByCustomerId(id);
+    }
+
+    @Override
+    public Iterable<String> listIdCustomer() {
+        return customerRepository.listIdCustomer();
     }
 
 

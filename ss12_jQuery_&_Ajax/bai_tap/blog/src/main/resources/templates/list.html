@@ -8,12 +8,6 @@
 <div>
         <input id="search" type="text">
 </div>
-<div class="notify">
-    <div th:if="${smg}">
-        <span th:text="${smg}"></span>
-    </div>
-    <a href="/create">Create new blog</a>
-</div>
 
 <table id="table">
     <caption style="color: rosybrown">Blog List</caption>
@@ -27,6 +21,15 @@
     </tr>
     </thead>
     <tbody>
+    <th:block th:each="blog: ${blogs}">
+        <tr>
+            <td th:text="${blog.id}"></td>
+            <td th:text="${blog.name}"></td>
+            <td th:text="${blog.blogger}"></td>
+            <td th:text="${blog.category.name}"></td>
+            <td><a th:href="@{${blog.url}}">View</a></td>
+        </tr>
+    </th:block>
     </tbody>
 </table>
 </body>
@@ -80,7 +83,7 @@
                     tr.push('<th>Category</th>')
                     tr.push('<th>View</th>')
                     tr.push('</tr>')
-                    for(let i=0; i<2; i++){
+                    for(let i=0; i<data.length; i++){
                         tr.push('<tr>');
                         tr.push('<td>' + data[i].id + '</td>')
                         tr.push('<td>' + data[i].name + '</td>')

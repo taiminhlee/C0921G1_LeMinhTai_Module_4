@@ -4,6 +4,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,9 +17,10 @@ import vn.codegym.case_study.model.Customer;
 import vn.codegym.case_study.service.customer.ICustomerService;
 import vn.codegym.case_study.service.customer_type.ICustomerTypeService;
 
+import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping(value = "/customer")
 public class CustomerController {
     @Autowired
@@ -73,9 +76,12 @@ public class CustomerController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute @Validated CustomerDto customerDto,
-                         BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                         BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model) {
         new CustomerDto().validate(customerDto, bindingResult);
-        if (bindingResult.hasFieldErrors()) {
+        List<String> customers=(List<String>) customerService.listIdCustomer();
+        if (bindingResult.hasFieldErrors()|| customers.contains(customerDto.getCustomerId())) {
+            model.addAttribute("smg","id already exist");
+            model.addAttribute("customerType",customerTypeService.findAll());
             return "customer/create";
         } else {
             Customer customer = new Customer();
@@ -88,8 +94,15 @@ public class CustomerController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable String id, RedirectAttributes redirectAttributes){
-        customerService.delete(id);
+        Optional<Customer> customer =customerService.findById(id);
+        customer.ifPresent(value -> customerService.delete(value));
         redirectAttributes.addFlashAttribute("smg","Delete success");
         return "redirect:/customer";
+    }
+
+    @GetMapping("/view/{id}")
+    public ResponseEntity<Customer> view(@PathVariable String id){
+        Optional<Customer> customer =customerService.findById(id);
+        return customer.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

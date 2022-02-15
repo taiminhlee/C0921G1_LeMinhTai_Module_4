@@ -1,8 +1,16 @@
 package vn.codegym.case_study.model;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Position {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int positionId;
     private String positionName;
+    @OneToMany(mappedBy = "employeeId")
+    private List<Employee> employees;
 
     public Position(String positionName) {
         this.positionName = positionName;

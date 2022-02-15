@@ -9,6 +9,7 @@ import vn.codegym.blog.model.Blog;
 import vn.codegym.blog.service.blog.IBlogService;
 import vn.codegym.blog.service.category.ICategoryService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,8 +22,16 @@ public class BlogController {
     @Autowired
     ICategoryService<Category> categoryService;
 
-
     @GetMapping("/list")
+    public ModelAndView getAllBlogPage() {
+        ModelAndView modelAndView = new ModelAndView("/list");
+        List<Blog> blogList=(List<Blog>) blogService.findAll();
+        modelAndView.addObject("blogs",blogList);
+        return modelAndView;
+    }
+
+
+    @GetMapping()
         public ResponseEntity<List<Blog>> list() {
         List<Blog> blogs=(List<Blog>) blogService.findAll();
         if (blogs.isEmpty()){

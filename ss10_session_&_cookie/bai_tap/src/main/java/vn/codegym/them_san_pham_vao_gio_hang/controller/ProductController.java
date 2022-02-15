@@ -46,6 +46,10 @@ public class ProductController {
             cart.decreaseProduct(product.get());
             return "redirect:/shopping-cart";
         }
+        if (action.equals("x")) {
+            cart.removeProduct(product.get());
+            return "redirect:/shopping-cart";
+        }
         cart.addProduct(product.get());
         model.addAttribute("smg","added to cart");
         return "redirect:/view/"+id;
@@ -53,7 +57,8 @@ public class ProductController {
 
     @GetMapping("/view/{id}")
     public String detail(@PathVariable Long id, Model model){
-        model.addAttribute("product",productService.findById(id).get());
+        Optional<Product> product=productService.findById(id);
+        product.ifPresent(value -> model.addAttribute("product", value));
         return "/view";
     }
 }

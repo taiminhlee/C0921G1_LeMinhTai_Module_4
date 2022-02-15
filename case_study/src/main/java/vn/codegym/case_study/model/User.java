@@ -1,16 +1,24 @@
 package vn.codegym.case_study.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class User {
+    @Id
     private String userName;
     private String password;
+    @OneToOne(mappedBy = "employeeId")
+    private Employee employee;
 
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
+    public User() {
     }
 
-    public User(String userName) {
-        this.userName=userName;
+    public User(String userName, String password, Employee employee) {
+        this.userName = userName;
+        this.password = password;
+        this.employee = employee;
     }
 
     public String getUserName() {
@@ -29,11 +37,11 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

@@ -17,12 +17,12 @@ public class Customer {
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
+    private String customerStatus;
 
     public Customer() {
     }
 
-    public Customer(String customerId, CustomerType customerType, String customerName, String customerBirthday, String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
-        this.customerId =customerId;
+    public Customer(CustomerType customerType, String customerName, String customerBirthday, String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress, String customerStatus) {
         this.customerType = customerType;
         this.customerName = customerName;
         this.customerBirthday = customerBirthday;
@@ -31,8 +31,16 @@ public class Customer {
         this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
+        this.customerStatus = customerStatus;
     }
-    
+
+    public String getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(String customerStatus) {
+        this.customerStatus = customerStatus;
+    }
 
     public String getCustomerId() {
         return customerId;
