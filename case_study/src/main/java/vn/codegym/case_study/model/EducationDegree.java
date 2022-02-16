@@ -9,7 +9,7 @@ public class EducationDegree {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long educationDegreeId;
     private String educationDegreeName;
-    @OneToMany(mappedBy = "employeeId")
+    @OneToMany(mappedBy = "educationDegree")
     private List<Employee> employees;
 
     public EducationDegree() {

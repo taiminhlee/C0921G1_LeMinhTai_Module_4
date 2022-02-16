@@ -20,7 +20,7 @@ import vn.codegym.case_study.service.customer_type.ICustomerTypeService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping(value = "/customer")
 public class CustomerController {
     @Autowired
@@ -29,7 +29,7 @@ public class CustomerController {
     @Autowired
     ICustomerTypeService customerTypeService;
 
-    @GetMapping
+    @GetMapping()
     public String list(@PageableDefault(value = 5) Pageable pageable,
                        Model model, Optional<String> name, Optional<Long> customerTypeId  ){
         model.addAttribute("customerType",customerTypeService.findAll());
@@ -101,8 +101,9 @@ public class CustomerController {
     }
 
     @GetMapping("/view/{id}")
-    public ResponseEntity<Customer> view(@PathVariable String id){
+    public String view(@PathVariable String id, Model model){
         Optional<Customer> customer =customerService.findById(id);
-        return customer.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        customer.ifPresent(value -> model.addAttribute("customer", value));
+        return "customer/view";
     }
 }

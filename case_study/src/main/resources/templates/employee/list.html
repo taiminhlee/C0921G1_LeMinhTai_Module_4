@@ -13,11 +13,11 @@
 
 </div>
 <div>
-    <form action="/customer">
+    <form action="/employee">
         <input name="name" type="text" placeholder="search">
-        <select name="customerTypeId">
-            <option disabled selected>Choose Category</option>
-            <option th:each="item : ${customerType}" th:value="${item.customerTypeId}" th:text="${item.customerTypeName}"></option>
+        <select name="positionId">
+            <option disabled selected>Choose Position</option>
+            <option th:each="item : ${position}" th:value="${item.positionId}" th:text="${item.positionName}"></option>
         </select>
         <button type="submit">Search</button>
     </form>
@@ -29,31 +29,30 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Customer Type</th>
+        <th>Position</th>
         <th>Address</th>
         <th>Birthday</th>
-        <th>Gender</th>
+        <th>Email</th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="c : ${customer}">
-        <td th:text="${c.customerId}"></td>
-        <td  th:text="${c.customerName}"></td>
-        <td th:text="${c.customerType.customerTypeName}"></td>
-        <td th:text="${c.customerAddress}"></td>
-        <td th:text="${c.customerBirthday}"></td>
-        <td th:if="${c.customerGender.equals('1')}" th:text="Male"></td>
-        <td th:if="${c.customerGender.equals('0')}" th:text="Female"></td>
+    <tr th:each="c : ${employee}">
+        <td th:text="${c.employeeId}"></td>
+        <td  th:text="${c.employeeName}"></td>
+        <td th:text="${c.position.positionName}"></td>
+        <td th:text="${c.employeeAddress}"></td>
+        <td th:text="${c.employeeBirthday}"></td>
+        <td th:text="${c.employeeEmail}"></td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-warning" th:href="@{/customer/edit/{id}(id=${c.customerId})}">Edit</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#cusId'+${c.customerId}">Delete</button>
-                <button type="button" class="btn btn-success view" th:value="${c.customerId}">View</button>
+                <button type="button" class="btn btn-warning" th:href="@{/employee/edit/{id}(id=${c.employeeId})}">Edit</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#cusId'+${c.employeeId}">Delete</button>
+                <button type="button" class="btn btn-success view" th:value="${c.employeeId}">View</button>
             </div>
 
-            <!-- Modal Delete -->
-            <div class="modal fade" th:id="'cusId' + ${c.customerId}" tabindex="-1"
+            <!-- Modal -->
+            <div class="modal fade modalID" th:id="'cusId' + ${c.employeeId}" tabindex="-1"
                  aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
@@ -63,13 +62,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Confirm delete <span class="text-warning" th:text="${c.customerName}"></span> ?
+                            Confirm delete <span class="text-warning" th:text="${c.employeeId}"></span> ?
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <a type="button" class="btn btn-danger text-decoration-none"
-                               th:href="@{/customer/delete/{id}(id=${c.customerId})}"
+                               th:href="@{/employee/delete/{id}(id=${c.employeeId})}"
                             >Delete</a>
                         </div>
                     </div>
@@ -80,11 +79,11 @@
     </tbody>
 </table>
 <div>
-    <a th:href="@{'/customer'(page=${customer.number - 1}, name=${name}, customerTypeId=${customerTypeId})}"
-       th:if="${customer.hasPrevious()}">Previous</a>
-    <span th:text="${customer.number + 1}"></span>/<span th:text="${customer.totalPages}"></span>
-    <a th:href="@{'/customer'(page=${customer.number + 1}, name=${name}, customerTypeId=${customerTypeId})}"
-       th:if="${customer.hasNext()}">Next</a>
+    <a th:href="@{'/employee'(page=${employee.number - 1}, name=${name}, positionId=${positionId})}"
+       th:if="${employee.hasPrevious()}">Previous</a>
+    <span th:text="${employee.number + 1}"></span>/<span th:text="${employee.totalPages}"></span>
+    <a th:href="@{'/employee'(page=${employee.number + 1}, name=${name}, positionId=${positionId})}"
+       th:if="${employee.hasNext()}">Next</a>
 </div>
 <!--modal view-->
 <div class="modal fade modalID"  tabindex="-1"
@@ -108,7 +107,6 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    // view
     $(document).ready(function () {
         $(".view").click(function () {
             let id = $(this).val();

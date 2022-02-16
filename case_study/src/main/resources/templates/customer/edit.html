@@ -9,31 +9,32 @@
         <input th:field="*{customerId}" hidden>
         <div>
             <label>Name</label>
-            <input type="text" th:field="*{customerName}"/>
+            <input type="text" th:field="*{customerName}" class="input"/>
         </div>
         <div>
             <label>Birthday</label>
-            <input type="text" th:field="*{customerBirthday}"/>
+            <input type="text" th:field="*{customerBirthday}" class="input"/>
         </div>
         <div>
             <label>Gender</label>
-            <input type="text" th:field="*{customerGender}"/>
+            <input type="radio" th:field="*{customerGender}" value="1"/>Male
+            <input type="radio" th:field="*{customerGender}" value="0"/>Female
         </div>
         <div>
             <label>Id Card</label>
-            <input type="text" th:field="*{customerIdCard}"/>
+            <input type="text" th:field="*{customerIdCard}" class="input"/>
         </div>
         <div>
             <label>Phone</label>
-            <input type="text" th:field="*{customerPhone}"/>
+            <input type="text" th:field="*{customerPhone}" class="input"/>
         </div>
         <div>
             <label>Email</label>
-            <input type="text" th:field="*{customerEmail}"/>
+            <input type="text" th:field="*{customerEmail}" class="input"/>
         </div>
         <div>
             <label>Address</label>
-            <input type="text" th:field="*{customerAddress}"/>
+            <input type="text" th:field="*{customerAddress}" class="input"/>
         </div>
         <div>
             <label>Category</label>

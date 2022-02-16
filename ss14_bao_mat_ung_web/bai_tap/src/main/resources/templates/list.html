@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+</head>
+<body>
+<a th:href="@{/blog/create}">Create new Blog</a>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+
+</div>
+<table id="blog">
+    <caption style="color: rosybrown">Blog List</caption>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Blogger</th>
+        <th>Category</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="blog: ${blogs}">
+        <tr>
+            <td th:text="${blog.id}"></td>
+            <td th:text="${blog.name}"></td>
+            <td th:text="${blog.blogger}"></td>
+            <td th:text="${blog.category.name}"></td>
+            <td><a th:href="@{${blog.url}}">View</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

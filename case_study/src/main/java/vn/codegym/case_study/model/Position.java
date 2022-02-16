@@ -7,21 +7,21 @@ import java.util.List;
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int positionId;
+    private Integer positionId;
     private String positionName;
-    @OneToMany(mappedBy = "employeeId")
+    @OneToMany(mappedBy = "position")
     private List<Employee> employees;
 
-    public Position(String positionName) {
-        this.positionName = positionName;
+    public Position() {
     }
 
-    public Position(int positionId, String positionName) {
+    public Position(Integer positionId, String positionName, List<Employee> employees) {
         this.positionId = positionId;
         this.positionName = positionName;
+        this.employees = employees;
     }
 
-    public Position(int position) {
+    public Position(Integer position) {
         this.positionId=position;
     }
 
@@ -29,7 +29,7 @@ public class Position {
         return positionId;
     }
 
-    public void setPositionId(int positionId) {
+    public void setPositionId(Integer positionId) {
         this.positionId = positionId;
     }
 
@@ -41,11 +41,11 @@ public class Position {
         this.positionName = positionName;
     }
 
-    @Override
-    public String toString() {
-        return "Position{" +
-                "positionId=" + positionId +
-                ", positionName='" + positionName + '\'' +
-                '}';
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

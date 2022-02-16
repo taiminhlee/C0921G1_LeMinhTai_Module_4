@@ -9,7 +9,7 @@ public class Division {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long divisionId;
     private String divisionName;
-    @OneToMany(mappedBy = "employeeId")
+    @OneToMany(mappedBy = "division")
     private List<Employee> employees;
 
     public Division() {

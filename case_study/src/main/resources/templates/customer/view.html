@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div tabindex="-1"
+     th:object="${customer}">
+    <div>
+        <div>
+            <p>Id: <span th:text="${customer.customerId}"></span></p>
+            <p> Customer Type: <span th:text="${customer.customerType.customerTypeName}"></span></p>
+            <p> Name: <span th:text="${customer.customerName}"></span></p>
+            <p> Birthday: <span th:text="${customer.customerBirthday}"></span></p>
+            <p> Gender: <span th:if="${customer.customerGender.equals('1')}" th:text="Male"></span> <span
+                    th:if="${customer.customerGender.equals('0')}" th:text="Female"></span></p>
+            <p> Id Card: <span th:text="${customer.customerIdCard}"></span></p>
+            <p> Phone: <span th:text="${customer.customerPhone}"></span></p>
+            <p> Email: <span th:text="${customer.customerEmail}"></span></p>
+            <p> Address: <span th:text="${customer.customerAddress}"></span></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
