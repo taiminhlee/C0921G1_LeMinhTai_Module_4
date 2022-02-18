@@ -6,20 +6,22 @@ import org.springframework.stereotype.Service;
 import vn.codegym.case_study.model.Customer;
 import vn.codegym.case_study.model.Employee;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public interface IEmployeeService {
     Page<Employee> findAll(Pageable pageable);
 
-    Page<Employee> findByEmployeeNameContaining(String name, Pageable pageable);
+    Page<Employee> search(String name, String positionId, String divisionId, String educationDegreeId, Pageable pageable);
 
-    Page<Employee> findByDivision_DivisionId(Long DivisionId, Pageable pageable);
+    void edit(Employee employee);
 
-    Page<Employee> findByPosition_PositionId(Integer PositionId, Pageable pageable);
+    void delete(Employee employee);
 
-    Page<Employee> findByEducationDegree_EducationDegreeId(Long EducationDegreeId, Pageable pageable);
+    Optional<Employee> findById(Long id);
 
-    Page<Employee> findByEmployeeNameContainingAndDivision_DivisionIdAndPosition_PositionIdAndEducationDegree_EducationDegreeId(
+    void save(Employee employee);
 
-            String employeeName, Long divisionId, Integer positionId, Long educationDegreeId, Pageable pageable);
-    Page<Employee> findByEmployeeNameContainingAndPosition_PositionId(String employeeName, Integer PositionId, Pageable pageable);
+    List<Employee> findAll();
 }

@@ -1,43 +1,53 @@
-package vn.codegym.case_study.model;
+package vn.codegym.case_study.dto;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import vn.codegym.case_study.model.Division;
+import vn.codegym.case_study.model.EducationDegree;
+import vn.codegym.case_study.model.Position;
+import vn.codegym.case_study.model.User;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
-@Entity
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class EmployeeDto implements Validator {
     private Long employeeId;
     private String employeeName;
+
     private String employeeBirthday;
+
+    @Pattern(regexp = "^(\\d{9}|\\d{12})$", message = "9 or 12 numbers")
     private String employeeIdCard;
+
+    @NotNull(message = "Not empty")
+    @Positive(message = "Not Negative")
     private Double employeeSalary;
+
+    @Pattern(regexp = "^(090|091|\\(84\\)\\+90|\\(84\\)\\+91){1}\\d{7}$", message = "wrong format")
     private String employeePhone;
+
+    @Email(message = "wrong format")
     private String employeeEmail;
     private String employeeAddress;
 
-    @ManyToOne
-    @JoinColumn(name = "position_id",referencedColumnName = "positionId")
+    @NotNull(message = "Choose please")
     private Position position;
-
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "education_degree_id",referencedColumnName = "educationDegreeId")
+    @NotNull(message = "Choose please")
     private EducationDegree educationDegree;
-
-    @ManyToOne
-    @JoinColumn(name = "division_id",referencedColumnName = "divisionId")
+    @NotNull(message = "Choose please")
     private Division division;
-
-    @OneToOne
-    @JoinColumn(name = "user_name",referencedColumnName = "userName")
     private User user;
     private String employeeStatus;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Contract> contracts;
+    public EmployeeDto() {
+    }
 
-
-    public Employee(String employeeName, String employeeBirthday, String employeeIdCard, Double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Position position, EducationDegree educationDegree, Division division, User user, String employeeStatus) {
+    public EmployeeDto(Long employeeId, String employeeName, String employeeBirthday, String employeeIdCard, Double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Position position, EducationDegree educationDegree, Division division, User user, String employeeStatus) {
+        this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeBirthday = employeeBirthday;
         this.employeeIdCard = employeeIdCard;
@@ -49,20 +59,8 @@ public class Employee {
         this.educationDegree = educationDegree;
         this.division = division;
         this.user = user;
-        this.employeeStatus =employeeStatus;
-    }
-
-    public Employee() {
-    }
-
-    public String getEmployeeStatus() {
-        return employeeStatus;
-    }
-
-    public void setEmployeeStatus(String employeeStatus) {
         this.employeeStatus = employeeStatus;
     }
-
 
     public Long getEmployeeId() {
         return employeeId;
@@ -158,5 +156,49 @@ public class Employee {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getEmployeeStatus() {
+        return employeeStatus;
+    }
+
+    public void setEmployeeStatus(String employeeStatus) {
+        this.employeeStatus = employeeStatus;
+    }
+
+    public static boolean isValid(final String date) {
+
+        boolean valid = false;
+
+        try {
+
+            // ResolverStyle.STRICT for 30, 31 days checking, and also leap year.
+            LocalDate.parse(date,
+                    DateTimeFormatter.ofPattern("uuuu-MM-dd")
+                            .withResolverStyle(ResolverStyle.STRICT)
+            );
+
+            valid = true;
+
+        } catch (DateTimeParseException e) {
+            e.printStackTrace();
+            valid = false;
+        }
+
+        return valid;
+
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        EmployeeDto employeeDto = (EmployeeDto) target;
+        if (!isValid(employeeDto.employeeBirthday)) {
+            errors.rejectValue("employeeBirthday", "birthday.employee", "wrong format");
+        }
     }
 }

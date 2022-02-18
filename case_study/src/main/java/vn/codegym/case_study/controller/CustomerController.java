@@ -55,16 +55,30 @@ public class CustomerController {
 
     @GetMapping("/edit/{id}")
     public String showEdit(Model model, @PathVariable String id){
-        model.addAttribute("customer",customerService.findById(id).get());
-        model.addAttribute("customerType",customerTypeService.findAll());
-        return "customer/edit";
+        Optional<Customer> customer=customerService.findById(id);
+        if (customer.isPresent()){
+            model.addAttribute("customerDto",customer.get());
+            model.addAttribute("customerType",customerTypeService.findAll());
+            return "customer/edit";
+        }
+        return "/customer/list";
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes){
-        customerService.save(customer);
-        redirectAttributes.addFlashAttribute("smg","edit success");
-        return "redirect:/customer";
+    public String edit(@ModelAttribute @Validated CustomerDto customerDto,
+                       BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model) {
+        new CustomerDto().validate(customerDto, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("customerType",customerTypeService.findAll());
+            return "customer/edit";
+        } else {
+            Customer customer = new Customer();
+            BeanUtils.copyProperties(customerDto, customer);
+            customer.setCustomerStatus("1");
+            customerService.save(customer);
+            redirectAttributes.addFlashAttribute("smg","Edit Success");
+            return "redirect:/customer";
+        }
     }
 
     @GetMapping("/create")
@@ -79,8 +93,10 @@ public class CustomerController {
                          BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model) {
         new CustomerDto().validate(customerDto, bindingResult);
         List<String> customers=(List<String>) customerService.listIdCustomer();
-        if (bindingResult.hasFieldErrors()|| customers.contains(customerDto.getCustomerId())) {
-            model.addAttribute("smg","id already exist");
+        if (bindingResult.hasFieldErrors()) {
+            if (customers.contains(customerDto.getCustomerId())){
+                model.addAttribute("smg","id already exist");
+            }
             model.addAttribute("customerType",customerTypeService.findAll());
             return "customer/create";
         } else {

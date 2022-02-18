@@ -25,8 +25,8 @@ public class Position {
         this.positionId=position;
     }
 
-    public int getPositionId() {
-        return positionId;
+    public Integer getPositionId() {
+        return this.positionId;
     }
 
     public void setPositionId(Integer positionId) {
@@ -34,7 +34,7 @@ public class Position {
     }
 
     public String getPositionName() {
-        return positionName;
+        return this.positionName;
     }
 
     public void setPositionName(String positionName) {

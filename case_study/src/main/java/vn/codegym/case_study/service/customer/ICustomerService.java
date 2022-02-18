@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import vn.codegym.case_study.model.Customer;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerService {
@@ -16,4 +17,5 @@ public interface ICustomerService {
     void delete(Customer customer);
     Optional<Customer> findById(String id);
     Iterable<String> listIdCustomer();
+    List<Customer> findAll();
 }

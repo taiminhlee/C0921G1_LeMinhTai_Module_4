@@ -20,7 +20,6 @@ public class CustomerDto implements Validator{
     private CustomerType customerType;
     private String customerName;
 
-    @NotBlank(message = "Not empty")
     private String customerBirthday;
 
     private String customerGender;
@@ -165,7 +164,7 @@ public class CustomerDto implements Validator{
     public void validate(Object target, Errors errors) {
         CustomerDto customerDto =(CustomerDto) target;
         if (! isValid(customerDto.customerBirthday)){
-            errors.rejectValue("customerBirthday", "birthday.forbidden", "wrong format");
+            errors.rejectValue("customerBirthday", "birthday.customer", "wrong format");
         }
     }
 }

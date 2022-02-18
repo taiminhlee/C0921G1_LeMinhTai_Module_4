@@ -10,7 +10,6 @@
     <div th:if="${smg}">
         <span th:text="${smg}"></span>
     </div>
-
 </div>
 <div>
     <form action="/customer">
@@ -47,7 +46,7 @@
         <td th:if="${c.customerGender.equals('0')}" th:text="Female"></td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-warning" th:href="@{/customer/edit/{id}(id=${c.customerId})}">Edit</button>
+                <button type="button" class="btn btn-warning"><a class="text-white" th:href="@{/customer/edit/{id}(id=${c.customerId})}">Edit</a></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#cusId'+${c.customerId}">Delete</button>
                 <button type="button" class="btn btn-success view" th:value="${c.customerId}">View</button>
             </div>
@@ -117,7 +116,6 @@
                 dataType:"HTML",
                 url:"customer/view/" + id,
                 success: function (data) {
-                    console.log(data)
                     $(".modal-body").html(data)
                     $(".modalID").modal("show")
                 }

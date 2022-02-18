@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div tabindex="-1"
+     th:object="${employee}">
+    <div>
+        <div>
+            <p>Id: <span th:text="${employee.employeeId}"></span></p>
+            <p>Position: <span th:text="${employee.position.positionName}"></span></p>
+            <p>Division: <span th:text="${employee.division.divisionName}"></span></p>
+            <p>Education Degree: <span th:text="${employee.educationDegree.educationDegreeName}"></span></p>
+            <p>Name: <span th:text="${employee.employeeName}"></span></p>
+            <p>Birthday: <span th:text="${employee.employeeBirthday}"></span></p>
+            <p>Salary: <span th:text="${employee.employeeSalary}"></span></p>
+            <p>Id Card: <span th:text="${employee.employeeIdCard}"></span></p>
+            <p>Phone: <span th:text="${employee.employeePhone}"></span></p>
+            <p>Email: <span th:text="${employee.employeeEmail}"></span></p>
+            <p>Address: <span th:text="${employee.employeeAddress}"></span></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

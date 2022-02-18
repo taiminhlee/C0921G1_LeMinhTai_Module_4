@@ -1,30 +1,34 @@
 package vn.codegym.case_study.model;
 
-public class RentType {
-    private int rentTypeId;
-    private String rentTypeName;
-    private double rentTypeCost;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
-    public RentType(String rentTypeName, double rentTypeCost) {
-        this.rentTypeName = rentTypeName;
-        this.rentTypeCost = rentTypeCost;
+@Entity
+public class RentType {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer rentTypeId;
+    private String rentTypeName;
+    private Double rentTypeCost;
+
+    @OneToMany(mappedBy = "rentType")
+    private List<Service> services;
+
+    public RentType() {
     }
 
-    public RentType(int rentTypeId, String rentTypeName, double rentTypeCost) {
+    public RentType(Integer rentTypeId, String rentTypeName, Double rentTypeCost) {
         this.rentTypeId = rentTypeId;
         this.rentTypeName = rentTypeName;
         this.rentTypeCost = rentTypeCost;
     }
 
-    public RentType(int rentType) {
-        this.rentTypeId=rentType;
-    }
-
-    public int getRentTypeId() {
+    public Integer getRentTypeId() {
         return rentTypeId;
     }
 
-    public void setRentTypeId(int rentTypeId) {
+    public void setRentTypeId(Integer rentTypeId) {
         this.rentTypeId = rentTypeId;
     }
 
@@ -36,20 +40,11 @@ public class RentType {
         this.rentTypeName = rentTypeName;
     }
 
-    public double getRentTypeCost() {
+    public Double getRentTypeCost() {
         return rentTypeCost;
     }
 
-    public void setRentTypeCost(double rentTypeCost) {
+    public void setRentTypeCost(Double rentTypeCost) {
         this.rentTypeCost = rentTypeCost;
-    }
-
-    @Override
-    public String toString() {
-        return "RentType{" +
-                "rentTypeId=" + rentTypeId +
-                ", rentTypeName='" + rentTypeName + '\'' +
-                ", rentTypeCost=" + rentTypeCost +
-                '}';
     }
 }

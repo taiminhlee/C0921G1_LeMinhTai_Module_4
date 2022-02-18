@@ -24,15 +24,9 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
 
      Page<Customer> findByCustomerNameContainingAndCustomerType_CustomerTypeId(String name, Long customerTypeId, Pageable pageable);
 
-//     @Query(value=" update customer " +
-//             "  set customer_status=0 " +
-//             " where customer_id = :id ", nativeQuery=true)
-//     @Modifying
-//     @Transactional
-//     void delete(@Param("id") String id);
-
      Optional<Customer> findByCustomerId(String customerId);
 
      @Query(value="select customer_id from customer", nativeQuery=true)
      Iterable<String> listIdCustomer();
+
 }

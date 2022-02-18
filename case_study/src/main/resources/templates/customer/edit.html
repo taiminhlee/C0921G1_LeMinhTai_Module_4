@@ -4,33 +4,38 @@
 <body>
 <div th:replace="/layout::header"></div>
 <div id="form">
-    <form action="#" th:action="@{/customer/edit}" th:object="${customer}"
+    <form action="#" th:action="@{/customer/edit}" th:object="${customerDto}"
           method="POST" novalidate="novalidate">
         <input th:field="*{customerId}" hidden>
         <div>
             <label>Name</label>
             <input type="text" th:field="*{customerName}" class="input"/>
+            <p th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></p>
         </div>
         <div>
             <label>Birthday</label>
             <input type="text" th:field="*{customerBirthday}" class="input"/>
+            <p th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}"></p>
         </div>
         <div>
-            <label>Gender</label>
+            <label>Gender: </label>
             <input type="radio" th:field="*{customerGender}" value="1"/>Male
             <input type="radio" th:field="*{customerGender}" value="0"/>Female
         </div>
         <div>
             <label>Id Card</label>
             <input type="text" th:field="*{customerIdCard}" class="input"/>
+            <p th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></p>
         </div>
         <div>
             <label>Phone</label>
             <input type="text" th:field="*{customerPhone}" class="input"/>
+            <p th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></p>
         </div>
         <div>
             <label>Email</label>
             <input type="text" th:field="*{customerEmail}" class="input"/>
+            <p th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></p>
         </div>
         <div>
             <label>Address</label>
@@ -41,6 +46,7 @@
             <select th:field="*{customerType.customerTypeId}">
                 <option th:each="item:${customerType}" th:value="${item.customerTypeId}"  th:text="${item.customerTypeName}"></option>
             </select>
+            <p th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>
         </div>
         <input type="submit" value="Edit"/>
     </form>

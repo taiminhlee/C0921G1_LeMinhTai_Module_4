@@ -1,81 +1,82 @@
 package vn.codegym.case_study.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Contract {
-    private int id;
-    private String startDate;
-    private String endDate;
-    private double deposit;
-    private double totalMoney;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer contractId;
+
+    private String contractStartDate;
+    private String contractEndDate;
+    private Double contractDeposit;
+    private Double contractTotalMoney;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id",referencedColumnName = "employeeId")
     private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id",referencedColumnName = "customerId")
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "service_id",referencedColumnName = "serviceId")
     private Service service;
 
     public Contract() {
     }
 
-    public Contract(int id, String startDate, String endDate, double deposit, double totalMoney, Employee employee, Customer customer, Service service) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deposit = deposit;
-        this.totalMoney = totalMoney;
+    public Contract(Integer id, String contractStartDate, String contractEndDate, Double contractDeposit, Double contractTotalMoney, Employee employee, Customer customer, Service service) {
+        this.contractId = id;
+        this.contractStartDate = contractStartDate;
+        this.contractEndDate = contractEndDate;
+        this.contractDeposit = contractDeposit;
+        this.contractTotalMoney = contractTotalMoney;
         this.employee = employee;
         this.customer = customer;
         this.service = service;
     }
 
-    public Contract(String startDate, String endDate, double deposit, double totalMoney, Employee employee, Customer customer, Service service) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deposit = deposit;
-        this.totalMoney = totalMoney;
-        this.employee = employee;
-        this.customer = customer;
-        this.service = service;
+    public Integer getContractId() {
+        return contractId;
     }
 
-    public Contract(int contractId) {
-        this.id=contractId;
+    public void setContractId(Integer contractId) {
+        this.contractId = contractId;
     }
 
-    public int getId() {
-        return id;
+    public String getContractStartDate() {
+        return contractStartDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setContractStartDate(String startDate) {
+        this.contractStartDate = startDate;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getContractEndDate() {
+        return contractEndDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setContractEndDate(String endDate) {
+        this.contractEndDate = endDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public Double getContractDeposit() {
+        return contractDeposit;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setContractDeposit(Double deposit) {
+        this.contractDeposit = deposit;
     }
 
-    public double getDeposit() {
-        return deposit;
+    public Double getContractTotalMoney() {
+        return contractTotalMoney;
     }
 
-    public void setDeposit(double deposit) {
-        this.deposit = deposit;
-    }
-
-    public double getTotalMoney() {
-        return totalMoney;
-    }
-
-    public void setTotalMoney(double totalMoney) {
-        this.totalMoney = totalMoney;
+    public void setContractTotalMoney(Double totalMoney) {
+        this.contractTotalMoney = totalMoney;
     }
 
     public Employee getEmployee() {
@@ -100,19 +101,5 @@ public class Contract {
 
     public void setService(Service service) {
         this.service = service;
-    }
-
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", deposit=" + deposit +
-                ", totalMoney=" + totalMoney +
-                ", employee=" + employee +
-                ", customer=" + customer +
-                ", service=" + service +
-                '}';
     }
 }

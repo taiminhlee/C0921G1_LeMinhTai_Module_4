@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import vn.codegym.case_study.model.Customer;
 import vn.codegym.case_study.repository.ICustomerRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,6 +37,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void save(Customer customer) {
+        customer.setCustomerStatus("1");
         customerRepository.save(customer);
     }
 
@@ -55,5 +57,8 @@ public class CustomerService implements ICustomerService {
         return customerRepository.listIdCustomer();
     }
 
-
+    @Override
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
+    }
 }

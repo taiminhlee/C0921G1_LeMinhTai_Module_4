@@ -10,7 +10,6 @@
     <div th:if="${smg}">
         <span th:text="${smg}"></span>
     </div>
-
 </div>
 <div>
     <form action="/employee">
@@ -19,11 +18,18 @@
             <option disabled selected>Choose Position</option>
             <option th:each="item : ${position}" th:value="${item.positionId}" th:text="${item.positionName}"></option>
         </select>
+        <select name="divisionId">
+            <option disabled selected>Choose Division</option>
+            <option th:each="item : ${division}" th:value="${item.divisionId}" th:text="${item.divisionName}"></option>
+        </select>
+        <select name="educationDegreeId">
+            <option disabled selected>Choose Education Degree</option>
+            <option th:each="item : ${education}" th:value="${item.educationDegreeId}" th:text="${item.educationDegreeName}"></option>
+        </select>
         <button type="submit">Search</button>
     </form>
-
 </div>
-<a href="/customer/create">Create new blog</a>
+<a href="/employee/create">Create new employee</a>
 <table id="table">
     <thead>
     <tr>
@@ -46,13 +52,13 @@
         <td th:text="${c.employeeEmail}"></td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-warning" th:href="@{/employee/edit/{id}(id=${c.employeeId})}">Edit</button>
+                <button type="button" class="btn btn-warning"><a class="text-white" th:href="@{/employee/edit/{id}(id=${c.employeeId})}">Edit</a></button>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#cusId'+${c.employeeId}">Delete</button>
                 <button type="button" class="btn btn-success view" th:value="${c.employeeId}">View</button>
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade modalID" th:id="'cusId' + ${c.employeeId}" tabindex="-1"
+            <!-- Modal Delete -->
+            <div class="modal fade" th:id="'cusId' + ${c.employeeId}" tabindex="-1"
                  aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
@@ -62,7 +68,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Confirm delete <span class="text-warning" th:text="${c.employeeId}"></span> ?
+                            Confirm delete <span class="text-warning" th:text="${c.employeeName}"></span> ?
 
                         </div>
                         <div class="modal-footer">
@@ -79,11 +85,9 @@
     </tbody>
 </table>
 <div>
-    <a th:href="@{'/employee'(page=${employee.number - 1}, name=${name}, positionId=${positionId})}"
-       th:if="${employee.hasPrevious()}">Previous</a>
+    <a th:href="@{'/employee'(page=${employee.number - 1})}" th:if="${employee.hasPrevious()}">Previous</a>
     <span th:text="${employee.number + 1}"></span>/<span th:text="${employee.totalPages}"></span>
-    <a th:href="@{'/employee'(page=${employee.number + 1}, name=${name}, positionId=${positionId})}"
-       th:if="${employee.hasNext()}">Next</a>
+    <a th:href="@{'/employee'(page=${employee.number + 1})}" th:if="${employee.hasNext()}">Next</a>
 </div>
 <!--modal view-->
 <div class="modal fade modalID"  tabindex="-1"
@@ -113,7 +117,7 @@
             $.ajax({
                 type:"GET",
                 dataType:"HTML",
-                url:"customer/view/" + id,
+                url:"employee/view/" + id,
                 success: function (data) {
                     console.log(data)
                     $(".modal-body").html(data)

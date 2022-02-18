@@ -1,12 +1,12 @@
 package vn.codegym.case_study.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
     @Id
     private String customerId;
-
     @ManyToOne
     @JoinColumn(name = "customer_type_id",referencedColumnName = "customerTypeId")
     private CustomerType customerType;
@@ -18,6 +18,9 @@ public class Customer {
     private String customerEmail;
     private String customerAddress;
     private String customerStatus;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Contract> contracts;
 
     public Customer() {
     }
@@ -112,22 +115,5 @@ public class Customer {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", customerType=" + customerType +
-                ", customerName='" + customerName + '\'' +
-                ", customerBirthday=" + customerBirthday +
-                ", customerGender='" + customerGender + '\'' +
-                ", customerIdCard='" + customerIdCard + '\'' +
-                ", customerPhone='" + customerPhone + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", customerAddress='" + customerAddress + '\'' +
-                '}';
     }
 }

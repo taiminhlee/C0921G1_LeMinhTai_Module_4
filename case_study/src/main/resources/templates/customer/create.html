@@ -3,7 +3,6 @@
 <head th:replace="/layout :: head"></head>
 <body>
 <div th:replace="layout :: header"></div>
-<h3>Create customer</h3>
 <div id="form">
     <form action="#" th:action="@{/customer/create}" th:object="${customerDto}"
           method="POST" novalidate="novalidate">
@@ -45,12 +44,11 @@
         <div>
             <label>Address</label>
             <input type="text" th:field="*{customerAddress}" class="input"/>
-            <input type="hidden" th:field="*{customerStatus}" th:value="1"/>
         </div>
         <div>
             <label>Customer Type</label>
-            <select th:field="*{customerType.customerTypeId}">
-                <option value="" selected>Choose option</option>
+            <select th:field="*{customerType}">
+                <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${customerType}" th:value="${item.customerTypeId}"  th:text="${item.customerTypeName}"></option>
             </select>
             <p th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>

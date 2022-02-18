@@ -1,34 +1,54 @@
-package vn.codegym.case_study.model;
+package vn.codegym.case_study.dto;
 
-import javax.persistence.*;
-import java.util.List;
+import vn.codegym.case_study.model.RentType;
+import vn.codegym.case_study.model.ServiceType;
 
-@Entity
-public class Service {
-    @Id
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
+
+public class ServiceDto {
+    @Pattern(regexp = "^DV-\\d{4}$", message ="wrong format")
     private String serviceId;
+
     private String serviceName;
+
+    @Positive(message = "Not Negative")
+    @NotNull(message = "Not empty")
     private Double serviceArea;
+
+    @Positive(message = "Not Negative")
+    @NotNull(message = "Not empty")
     private Double serviceCost;
+
+    @Positive(message = "Not Negative")
+    @NotNull(message = "Not empty")
     private Integer serviceMaxPeople;
-    @ManyToOne
-    @JoinColumn(name = "rent_type",referencedColumnName = "rentTypeId")
+
+    @NotNull(message = "Choose please")
     private RentType rentType;
-    @ManyToOne
-    @JoinColumn(name = "service_type",referencedColumnName = "serviceTypeId")
+
+    @NotNull(message = "Choose please")
     private ServiceType serviceType;
+
     private String standardRoom;
     private String descriptionOtherConvenience;
+
+    @Positive(message = "Not Negative")
+    @NotNull(message = "Not empty")
     private Double poolArea;
+
+    @Positive(message = "Not Negative")
+    @NotNull(message = "Not empty")
     private Integer numberOfFloors;
 
-    @OneToMany(mappedBy = "service")
-    private List<Contract> contracts;
-
-    public Service() {
+    public ServiceDto() {
     }
 
-    public Service(String serviceId, String serviceName, Double serviceArea, Double serviceCost, Integer serviceMaxPeople, RentType rentType, ServiceType serviceType, String standardRoom, String descriptionOtherConvenience, Double poolArea, Integer numberOfFloors) {
+    public ServiceDto(String serviceId, String serviceName, Double serviceArea, Double serviceCost, Integer serviceMaxPeople, RentType rentType, ServiceType serviceType, String standardRoom, String descriptionOtherConvenience, Double poolArea, Integer numberOfFloors) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceArea = serviceArea;
