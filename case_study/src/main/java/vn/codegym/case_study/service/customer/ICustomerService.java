@@ -10,12 +10,22 @@ import java.util.Optional;
 
 public interface ICustomerService {
     Page<Customer> findAll(Pageable pageable);
+
     Page<Customer> findByCustomerNameContaining(String name, Pageable pageable);
+
     Page<Customer> findByCustomerType_CustomerTypeId(Long customerTypeId, Pageable pageable);
+
     Page<Customer> findByCustomerNameContainingAndCustomerType_CustomerTypeId(String name, Long customerTypeId, Pageable pageable);
+
     void save(Customer customer);
+
     void delete(Customer customer);
+
     Optional<Customer> findById(String id);
+
     Iterable<String> listIdCustomer();
+
     List<Customer> findAll();
+
+    Page<Customer> customerUsing(Pageable pageable);
 }

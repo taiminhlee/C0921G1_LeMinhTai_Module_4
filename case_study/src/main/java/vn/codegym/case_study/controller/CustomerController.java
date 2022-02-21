@@ -4,8 +4,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.case_study.dto.CustomerDto;
 import vn.codegym.case_study.model.Customer;
+import vn.codegym.case_study.service.contract.IContractService;
+import vn.codegym.case_study.service.contract_detail.IContractDetailService;
 import vn.codegym.case_study.service.customer.ICustomerService;
 import vn.codegym.case_study.service.customer_type.ICustomerTypeService;
 
@@ -24,10 +24,16 @@ import java.util.Optional;
 @RequestMapping(value = "/customer")
 public class CustomerController {
     @Autowired
-    ICustomerService customerService;
+   private ICustomerService customerService;
 
     @Autowired
-    ICustomerTypeService customerTypeService;
+   private ICustomerTypeService customerTypeService;
+
+    @Autowired
+   private IContractService contractService;
+
+    @Autowired
+   private IContractDetailService contractDetailService;
 
     @GetMapping()
     public String list(@PageableDefault(value = 5) Pageable pageable,
@@ -48,7 +54,6 @@ public class CustomerController {
             model.addAttribute("customerTypeId",customerTypeId.get());
             model.addAttribute("customer",customerService.findByCustomerNameContainingAndCustomerType_CustomerTypeId(name.get(),
                     customerTypeId.get(),pageable));
-
         }
         return "customer/list";
     }
@@ -121,5 +126,14 @@ public class CustomerController {
         Optional<Customer> customer =customerService.findById(id);
         customer.ifPresent(value -> model.addAttribute("customer", value));
         return "customer/view";
+    }
+
+    @GetMapping("/using")
+    public String customerUsing(@PageableDefault(value = 5) Pageable pageable,Model model,
+                                @RequestParam(defaultValue = "") String name,
+                                @RequestParam(defaultValue = "") String service){
+
+        model.addAttribute("contractDetail",contractDetailService.customerUsing(name, service, pageable));
+        return "customer/customerUsing";
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ICustomerRepository extends JpaRepository<Customer,Long> {
+public interface ICustomerRepository extends JpaRepository<Customer,String> {
      @Query(value="select * from customer where customer_status=1", nativeQuery=true)
      Page<Customer> findAll(Pageable pageable);
 
@@ -29,4 +29,12 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
      @Query(value="select customer_id from customer", nativeQuery=true)
      Iterable<String> listIdCustomer();
 
+     @Query(value="select * \n" +
+             "from customer\n" +
+             " right join contract on customer.customer_id = contract.customer_id \n" +
+             "where customer_status=1",nativeQuery=true, countQuery="select count(*) \n" +
+             "       from customer \n" +
+             "       right join contract on customer.customer_id = contract.customer_id \n" +
+             "       where customer_status=1")
+     Page<Customer> customerUsing(Pageable pageable);
 }

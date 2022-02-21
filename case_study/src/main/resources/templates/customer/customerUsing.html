@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/layout :: header"></div>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+</div>
+<div>
+    <form action="/customer/using" method="get">
+        <input name="name" type="text" placeholder="search name customer">
+        <input name="service" type="text" placeholder="search name attach service">
+        <button type="submit">Search</button>
+    </form>
+</div>
+<table id="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Attach Service Name</th>
+        <th>Attach Service Cost</th>
+        <th>Attach Service Status</th>
+        <th>Attach Service Unit</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${contractDetail}">
+        <td th:text="${c.contract.customer.customerName}"></td>
+        <td  th:text="${c.attachService.attachServiceName}"></td>
+        <td  th:text="${c.attachService.attachServiceCost}"></td>
+        <td  th:text="${c.attachService.attachServiceStatus}"></td>
+        <td  th:text="${c.attachService.attachServiceUnit}"></td>
+        <td> <a th:href="@{/service/edit/{id}(id=c.contract.service.serviceId)}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/customer'(page=${contractDetail.number - 1})}"
+       th:if="${contractDetail.hasPrevious()}">Previous</a>
+    <span th:text="${contractDetail.number + 1}"></span>/<span th:text="${contractDetail.totalPages}"></span>
+    <a th:href="@{'/customer'(page=${contractDetail.number + 1})}"
+       th:if="${contractDetail.hasNext()}">Next</a>
+</div>
+<!--modal view-->
+<div class="modal fade modalID"  tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Detail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // view
+    $(document).ready(function () {
+        $(".view").click(function () {
+            let id = $(this).val();
+            $.ajax({
+                type:"GET",
+                dataType:"HTML",
+                url:"customer/view/" + id,
+                success: function (data) {
+                    $(".modal-body").html(data)
+                    $(".modalID").modal("show")
+                }
+            })
+        })
+    })
+</script>
+</html>

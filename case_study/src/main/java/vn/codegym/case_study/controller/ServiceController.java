@@ -6,10 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.case_study.dto.ServiceDto;
 import vn.codegym.case_study.model.Service;
@@ -56,6 +53,31 @@ public class ServiceController {
             serviceService.create(service);
             redirectAttributes.addFlashAttribute("smg","Create Success");
             return "redirect:/service";
+        }
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEdit(@PathVariable String id,Model model){
+        if (serviceService.viewService(id).isPresent()){
+            model.addAttribute("service",serviceService.viewService(id).get());
+            return "service/edit";
+        }
+       return "customer/customerUsing";
+    }
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute @Validated ServiceDto serviceDto, BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes, Model model){
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("serviceType", serviceTypeService.findAll());
+            model.addAttribute("rentType", rentTypeService.findAll());
+            return "service/edit";
+        } else {
+            Service service = new Service();
+            BeanUtils.copyProperties(serviceDto, service);
+            serviceService.create(service);
+            redirectAttributes.addFlashAttribute("smg","Edit Success");
+            return "redirect:/customer/using";
         }
     }
 }

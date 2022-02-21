@@ -37,6 +37,8 @@ public class Customer {
         this.customerStatus = customerStatus;
     }
 
+
+
     public String getCustomerStatus() {
         return customerStatus;
     }

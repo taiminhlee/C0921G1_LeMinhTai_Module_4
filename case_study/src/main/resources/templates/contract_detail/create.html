@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<div th:replace="layout :: header"></div>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+</div>
+<div id="form">
+    <form action="#" th:action="@{/contractDetail/create}" th:object="${contractDetailDto}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label>Quantity</label>
+            <input type="text" th:field="*{quantity}" class="input"/>
+            <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+        </div>
+        <div>
+            <label>Contract: </label>
+            <select th:field="*{contract}">
+                <option th:value="null" selected >Choose option</option>
+                <option th:each="item:${contract}" th:value="${item.contractId}"
+                        th:text="${item.contractId}+': '+${item.employee.employeeName}"></option>
+            </select>
+            <p th:if="${#fields.hasErrors('contract')}" th:errors="*{contract}"></p>
+        </div>
+        <div>
+            <label>Attach Service: </label>
+            <select th:field="*{attachService}">
+                <option th:value="null" selected >Choose option</option>
+                <option th:each="item:${attachService}" th:value="${item.attachServiceId}" th:text="${item.attachServiceName}"></option>
+            </select>
+            <p th:if="${#fields.hasErrors('attachService')}" th:errors="*{attachService}"></p>
+        </div>
+        <input type="submit" value="Create"/>
+    </form>
+</div>
+</body>
+</html>

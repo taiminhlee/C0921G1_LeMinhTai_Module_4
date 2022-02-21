@@ -1,6 +1,7 @@
 package vn.codegym.case_study.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Contract {
@@ -24,6 +25,9 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name = "service_id",referencedColumnName = "serviceId")
     private Service service;
+
+    @OneToMany(mappedBy = "contract")
+    private List<ContractDetail> contractDetails;
 
     public Contract() {
     }
@@ -101,5 +105,13 @@ public class Contract {
 
     public void setService(Service service) {
         this.service = service;
+    }
+
+    public List<ContractDetail> getContractDetails() {
+        return contractDetails;
+    }
+
+    public void setContractDetails(List<ContractDetail> contractDetails) {
+        this.contractDetails = contractDetails;
     }
 }

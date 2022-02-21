@@ -1,26 +1,26 @@
-package vn.codegym.case_study.model;
+package vn.codegym.case_study.dto;
 
-import javax.persistence.*;
+import vn.codegym.case_study.model.AttachService;
+import vn.codegym.case_study.model.Contract;
 
-@Entity
-public class ContractDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+public class ContractDetailDto {
     private Integer contract_detail_id;
-
-    @ManyToOne
-    @JoinColumn(name = "contract_id",referencedColumnName = "contractId")
+    @NotNull(message = "choose please")
     private Contract contract;
-
-    @ManyToOne
-    @JoinColumn(name = "attach_service_id",referencedColumnName = "attachServiceId")
+    @NotNull(message = "choose please")
     private AttachService attachService;
+    @Positive(message = "Not negative")
+    @NotNull(message = "Not empty")
     private Integer quantity;
 
-    public ContractDetail() {
+    public ContractDetailDto() {
     }
 
-    public ContractDetail(Integer contract_detail_id, Contract contract, AttachService attachService, Integer quantity) {
+    public ContractDetailDto(Integer contract_detail_id,Contract contract,AttachService attachService,Integer quantity) {
         this.contract_detail_id = contract_detail_id;
         this.contract = contract;
         this.attachService = attachService;

@@ -1,11 +1,8 @@
 package vn.codegym.case_study.dto;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import vn.codegym.case_study.model.CustomerType;
-
-
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -143,6 +140,8 @@ public class CustomerDto implements Validator{
                     DateTimeFormatter.ofPattern("uuuu-MM-dd")
                             .withResolverStyle(ResolverStyle.STRICT)
             );
+
+
 
             valid = true;
 

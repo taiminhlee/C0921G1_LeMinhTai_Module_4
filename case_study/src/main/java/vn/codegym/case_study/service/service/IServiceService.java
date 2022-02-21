@@ -2,6 +2,7 @@ package vn.codegym.case_study.service.service;
 
 
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface IServiceService {
     void create(vn.codegym.case_study.model.Service service);
     Iterable<String> listServiceId();
     List<vn.codegym.case_study.model.Service> findAll();
+    Optional<vn.codegym.case_study.model.Service> viewService(@Param("id") String id);
 }

@@ -28,4 +28,9 @@ public class ServiceService implements IServiceService {
     public List<vn.codegym.case_study.model.Service> findAll() {
         return serviceRepository.findAll();
     }
+
+    @Override
+    public Optional<vn.codegym.case_study.model.Service> viewService(String id) {
+        return serviceRepository.viewService(id);
+    }
 }

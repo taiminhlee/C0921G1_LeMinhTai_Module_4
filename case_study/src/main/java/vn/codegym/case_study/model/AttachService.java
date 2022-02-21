@@ -1,20 +1,27 @@
 package vn.codegym.case_study.model;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class AttachService {
-    private int attachServiceId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer attachServiceId;
     private String attachServiceName;
-    private double attachServiceCost;
-    private int attachServiceUnit;
+    private Double attachServiceCost;
+    private String attachServiceUnit;
     private String attachServiceStatus;
 
-    public AttachService(String attachServiceName, double attachServiceCost, int attachServiceUnit, String attachServiceStatus) {
-        this.attachServiceName = attachServiceName;
-        this.attachServiceCost = attachServiceCost;
-        this.attachServiceUnit = attachServiceUnit;
-        this.attachServiceStatus = attachServiceStatus;
+    @OneToMany(mappedBy = "attachService")
+    private List<ContractDetail> contractDetails;
+
+
+
+    public AttachService() {
     }
 
-    public AttachService(int attachServiceId, String attachServiceName, double attachServiceCost, int attachServiceUnit, String attachServiceStatus) {
+    public AttachService(Integer attachServiceId, String attachServiceName, Double attachServiceCost, String attachServiceUnit, String attachServiceStatus) {
         this.attachServiceId = attachServiceId;
         this.attachServiceName = attachServiceName;
         this.attachServiceCost = attachServiceCost;
@@ -22,21 +29,11 @@ public class AttachService {
         this.attachServiceStatus = attachServiceStatus;
     }
 
-    public AttachService(int id, String name, String status) {
-        this.attachServiceId=id;
-        this.attachServiceName=name;
-        this.attachServiceStatus=status;
-    }
-
-    public AttachService(int attachServiceId) {
-        this.attachServiceId=attachServiceId;
-    }
-
-    public int getAttachServiceId() {
+    public Integer getAttachServiceId() {
         return attachServiceId;
     }
 
-    public void setAttachServiceId(int attachServiceId) {
+    public void setAttachServiceId(Integer attachServiceId) {
         this.attachServiceId = attachServiceId;
     }
 
@@ -48,19 +45,19 @@ public class AttachService {
         this.attachServiceName = attachServiceName;
     }
 
-    public double getAttachServiceCost() {
+    public Double getAttachServiceCost() {
         return attachServiceCost;
     }
 
-    public void setAttachServiceCost(double attachServiceCost) {
+    public void setAttachServiceCost(Double attachServiceCost) {
         this.attachServiceCost = attachServiceCost;
     }
 
-    public int getAttachServiceUnit() {
+    public String getAttachServiceUnit() {
         return attachServiceUnit;
     }
 
-    public void setAttachServiceUnit(int attachServiceUnit) {
+    public void setAttachServiceUnit(String attachServiceUnit) {
         this.attachServiceUnit = attachServiceUnit;
     }
 
@@ -70,16 +67,5 @@ public class AttachService {
 
     public void setAttachServiceStatus(String attachServiceStatus) {
         this.attachServiceStatus = attachServiceStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "AttachService{" +
-                "attachServiceId=" + attachServiceId +
-                ", attachServiceName='" + attachServiceName + '\'' +
-                ", attachServiceCost=" + attachServiceCost +
-                ", attachServiceUnit=" + attachServiceUnit +
-                ", attachServiceStatus='" + attachServiceStatus + '\'' +
-                '}';
     }
 }

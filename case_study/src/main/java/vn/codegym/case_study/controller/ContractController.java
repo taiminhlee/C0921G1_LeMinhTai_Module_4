@@ -15,11 +15,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.case_study.dto.ContractDto;
 import vn.codegym.case_study.dto.EmployeeDto;
 import vn.codegym.case_study.model.Contract;
+import vn.codegym.case_study.model.Customer;
 import vn.codegym.case_study.model.Employee;
 import vn.codegym.case_study.service.contract.IContractService;
+import vn.codegym.case_study.service.customer.CustomerService;
 import vn.codegym.case_study.service.customer.ICustomerService;
 import vn.codegym.case_study.service.employee.IEmployeeService;
 import vn.codegym.case_study.service.service.IServiceService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/contract")
@@ -59,7 +63,7 @@ public class ContractController {
             BeanUtils.copyProperties(contractDto, contract);
             contractService.save(contract);
             redirectAttributes.addFlashAttribute("smg","Create Success");
-            return "redirect:/employee";
+            return "redirect:/contract";
         }
     }
 }

@@ -2,15 +2,11 @@ package vn.codegym.case_study.dto;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import org.springframework.validation.annotation.Validated;
 import vn.codegym.case_study.model.Customer;
 import vn.codegym.case_study.model.Employee;
 import vn.codegym.case_study.model.Service;
-
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.lang.annotation.Annotation;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -28,13 +24,13 @@ public class ContractDto implements Validator {
     @Positive(message = "Not Negative")
     private Double contractTotalMoney;
 
-    @NotNull(message = "Not empty")
+    @NotNull(message = "Choose please")
     private Employee employee;
 
-    @NotNull(message = "Not empty")
+    @NotNull(message = "Choose please")
     private Customer customer;
 
-    @NotNull(message = "Not empty")
+    @NotNull(message = "Choose please")
     private Service service;
 
     public ContractDto() {

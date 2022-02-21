@@ -3,6 +3,11 @@
 <head th:replace="/layout :: head"></head>
 <body>
 <div th:replace="layout :: header"></div>
+<div class="notify">
+    <div th:if="${smg}">
+        <span th:text="${smg}"></span>
+    </div>
+</div>
 <div id="form">
     <form action="#" th:action="@{/contract/create}" th:object="${contractDto}"
           method="POST" novalidate="novalidate">
@@ -45,7 +50,7 @@
         <div>
             <label>Customer: </label>
             <select th:field="*{customer}">
-                <option th:value="" selected >Choose option</option>
+                <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${customer}" th:value="${item.customerId}"  th:text="${item.customerName}"></option>
             </select>
             <p th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}"></p>
