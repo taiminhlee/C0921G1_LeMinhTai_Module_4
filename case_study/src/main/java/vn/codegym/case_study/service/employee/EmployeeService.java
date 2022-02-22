@@ -44,6 +44,7 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public void save(Employee employee) {
+        employee.setEmployeeStatus("1");
         employeeRepository.save(employee);
     }
 

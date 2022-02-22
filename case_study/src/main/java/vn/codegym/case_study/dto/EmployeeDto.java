@@ -178,6 +178,8 @@ public class EmployeeDto implements Validator {
                             .withResolverStyle(ResolverStyle.STRICT)
             );
 
+
+
             valid = true;
 
         } catch (DateTimeParseException e) {
@@ -187,6 +189,25 @@ public class EmployeeDto implements Validator {
 
         return valid;
 
+    }
+
+    public static boolean validateDateOfBirth(String dateOfBirth) {
+        LocalDate now = LocalDate.now();
+
+        boolean isRetry=false;
+
+        try {
+            LocalDate birthday = LocalDate.parse(dateOfBirth);
+            LocalDate after18Years = birthday.plusYears(18);
+            LocalDate after100Years = birthday.plusYears(100);
+
+            if (after18Years.isAfter(now) || after100Years.isBefore(now))
+                isRetry = true;
+        }catch  (DateTimeParseException e) {
+            e.printStackTrace();
+            isRetry = false;
+        }
+        return isRetry;
     }
 
     @Override
@@ -199,6 +220,8 @@ public class EmployeeDto implements Validator {
         EmployeeDto employeeDto = (EmployeeDto) target;
         if (!isValid(employeeDto.employeeBirthday)) {
             errors.rejectValue("employeeBirthday", "birthday.employee", "wrong format");
+        }else if (validateDateOfBirth(employeeDto.employeeBirthday)){
+            errors.rejectValue("employeeBirthday", "age.employee", "underage");
         }
     }
 }

@@ -2,9 +2,7 @@ package vn.codegym.case_study.service.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.codegym.case_study.model.ServiceType;
 import vn.codegym.case_study.repository.IServiceRepository;
-import vn.codegym.case_study.service.service_type.IServiceTypeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +14,7 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void create(vn.codegym.case_study.model.Service service) {
+        service.setServiceStatus("1");
         serviceRepository.save(service);
     }
 
@@ -30,7 +29,13 @@ public class ServiceService implements IServiceService {
     }
 
     @Override
-    public Optional<vn.codegym.case_study.model.Service> viewService(String id) {
-        return serviceRepository.viewService(id);
+    public Optional<vn.codegym.case_study.model.Service> findById(String id) {
+        return serviceRepository.findById(id);
+    }
+
+    @Override
+    public void delete(vn.codegym.case_study.model.Service service) {
+        service.setServiceStatus("0");
+        serviceRepository.save(service);
     }
 }

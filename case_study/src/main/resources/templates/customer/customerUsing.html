@@ -36,53 +36,49 @@
         <td  th:text="${c.attachService.attachServiceCost}"></td>
         <td  th:text="${c.attachService.attachServiceStatus}"></td>
         <td  th:text="${c.attachService.attachServiceUnit}"></td>
-        <td> <a th:href="@{/service/edit/{id}(id=c.contract.service.serviceId)}">Edit</a></td>
+        <td>
+            <a th:href="@{/service/edit/{id}(id=${c.contract.service.serviceId})}">Edit</a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" th:attr="data-bs-target='#cusId'+${c.contract.service.serviceId}">Delete</button>
+            <div class="modal fade" th:id="'cusId' + ${c.contract.service.serviceId}" tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">CONFIRM DELETE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Confirm delete <span class="text-warning" th:text="${c.contract.service.serviceName}"></span> ?
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a type="button" class="btn btn-danger text-decoration-none"
+                               th:href="@{/service/delete/{id}(id=${c.contract.service.serviceId})}"
+                            >Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
     </tr>
     </tbody>
 </table>
 <div>
-    <a th:href="@{'/customer'(page=${contractDetail.number - 1})}"
-       th:if="${contractDetail.hasPrevious()}">Previous</a>
-    <span th:text="${contractDetail.number + 1}"></span>/<span th:text="${contractDetail.totalPages}"></span>
-    <a th:href="@{'/customer'(page=${contractDetail.number + 1})}"
-       th:if="${contractDetail.hasNext()}">Next</a>
-</div>
-<!--modal view-->
-<div class="modal fade modalID"  tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" >Detail</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
+    <nav aria-label="..." >
+        <ul class="pagination">
+            <li class="page-item" th:if="${contractDetail.hasPrevious()}">
+                <a class="page-link" th:href="@{'/customer'(page=${contractDetail.number -1})}">Previous</a>
+            </li>
+            <!--            <div th:each="item : ${customer.getTotalPages()}">-->
+            <li class="page-item"><a class="page-link" th:text="${contractDetail.getNumber() +1}"></a></li>
+            <!--            </div>-->
+            <li class="page-item" th:if="${contractDetail.hasNext()}">
+                <a class="page-link" th:href="@{'/customer'(page=${contractDetail.number + 1})}">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    // view
-    $(document).ready(function () {
-        $(".view").click(function () {
-            let id = $(this).val();
-            $.ajax({
-                type:"GET",
-                dataType:"HTML",
-                url:"customer/view/" + id,
-                success: function (data) {
-                    $(".modal-body").html(data)
-                    $(".modalID").modal("show")
-                }
-            })
-        })
-    })
-</script>
 </html>

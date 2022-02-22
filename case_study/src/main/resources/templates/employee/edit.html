@@ -4,7 +4,7 @@
 <body>
 <div th:replace="/layout::header"></div>
 <div id="form">
-    <form action="#" th:action="@{/employee/edit}" th:object="${employee}"
+    <form action="#" th:action="@{/employee/edit}" th:object="${employeeDto}"
           method="POST" novalidate="novalidate">
         <input th:field="*{employeeId}" hidden>
         <div>
@@ -55,14 +55,10 @@
         </div>
         <div>
             <label>Position</label>
-            <select th:field="*{position}">
+            <select th:field="*{position}" class="input">
                 <option th:each="item:${position}" th:value="${item.positionId}" th:text="${item.positionName}"></option>
             </select>
             <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></p>
-        </div>
-        <div>
-            <label>Address</label>
-            <input type="text" th:field="*{employeeAddress}" class="input"/>
         </div>
         <input type="submit" value="Edit"/>
     </form>

@@ -85,26 +85,31 @@
     </tbody>
 </table>
 <div>
-    <a th:href="@{'/employee'(page=${employee.number - 1})}" th:if="${employee.hasPrevious()}">Previous</a>
-    <span th:text="${employee.number + 1}"></span>/<span th:text="${employee.totalPages}"></span>
-    <a th:href="@{'/employee'(page=${employee.number + 1})}" th:if="${employee.hasNext()}">Next</a>
+    <nav aria-label="..." >
+        <ul class="pagination">
+            <li class="page-item" th:if="${employee.hasPrevious()}">
+                <a class="page-link" th:href="@{'/employee'(page=${employee.number -1})}">Previous</a>
+            </li>
+            <!--            <div th:each="item : ${customer.getTotalPages()}">-->
+            <li class="page-item"><a class="page-link" th:text="${employee.getNumber() +1}"></a></li>
+            <!--            </div>-->
+            <li class="page-item" th:if="${employee.hasNext()}">
+                <a class="page-link" th:href="@{'/employee'(page=${employee.number + 1})}">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <!--modal view-->
-<div class="modal fade modalID"  tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" >Detail</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="card">
+            <div class="card-img"> <img class="img-fluid" src="https://i.imgur.com/4niebFr.jpg"> </div>
+            <div class="card-title">
+                <p>Detail!</p>
             </div>
-            <div class="modal-body">
+            <div class="card-text modal-body">
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
+            </div> <button class="btn">Cancel</button>
         </div>
     </div>
 </div>
@@ -121,7 +126,7 @@
                 success: function (data) {
                     console.log(data)
                     $(".modal-body").html(data)
-                    $(".modalID").modal("show")
+                    $("#myModal").modal("show")
                 }
             })
         })

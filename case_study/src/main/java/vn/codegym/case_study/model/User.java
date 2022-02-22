@@ -1,8 +1,7 @@
 package vn.codegym.case_study.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,13 +12,22 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Employee employee;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_name"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> roles;
+
     public User() {
     }
 
-    public User(String userName, String password, Employee employee) {
+    public User(String userName, String password, Employee employee, List<Role> roles) {
         this.userName = userName;
         this.password = password;
         this.employee = employee;
+        this.roles = roles;
     }
 
     public String getUserName() {
@@ -44,5 +52,13 @@ public class User {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

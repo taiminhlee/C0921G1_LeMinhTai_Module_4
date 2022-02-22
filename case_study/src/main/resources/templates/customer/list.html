@@ -85,31 +85,36 @@
     </tbody>
 </table>
 <div>
-    <a th:href="@{'/customer'(page=${customer.number - 1}, name=${name}, customerTypeId=${customerTypeId})}"
-       th:if="${customer.hasPrevious()}">Previous</a>
-    <span th:text="${customer.number + 1}"></span>/<span th:text="${customer.totalPages}"></span>
-    <a th:href="@{'/customer'(page=${customer.number + 1}, name=${name}, customerTypeId=${customerTypeId})}"
-       th:if="${customer.hasNext()}">Next</a>
+    <nav aria-label="..." >
+        <ul class="pagination">
+            <li class="page-item" th:if="${customer.hasPrevious()}">
+                <a class="page-link" th:href="@{'/customer'(page=${customer.number -1}, name=${name}, customerTypeId=${customerTypeId})}">Previous</a>
+            </li>
+<!--            <div th:each="item : ${customer.getTotalPages()}">-->
+                <li class="page-item"><a class="page-link" th:text="${customer.getNumber() +1}"></a></li>
+<!--            </div>-->
+            <li class="page-item" th:if="${customer.hasNext()}">
+                <a class="page-link" th:href="@{'/customer'(page=${customer.number + 1}, name=${name}, customerTypeId=${customerTypeId})}">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
-<!--modal view-->
-<div class="modal fade modalID"  tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" >Detail</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
 
+<!--modal view-->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="card">
+            <div class="card-img"> <img class="img-fluid" src="https://i.imgur.com/4niebFr.jpg"> </div>
+            <div class="card-title">
+                <p>Detail!</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
+            <div class="card-text modal-body">
+
+            </div> <button class="btn">Cancel</button>
         </div>
     </div>
 </div>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -123,7 +128,7 @@
                 url:"customer/view/" + id,
                 success: function (data) {
                     $(".modal-body").html(data)
-                    $(".modalID").modal("show")
+                    $("#myModal").modal("show")
                 }
             })
         })

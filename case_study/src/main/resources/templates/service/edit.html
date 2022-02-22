@@ -9,10 +9,9 @@
     </div>
 </div>
 <div id="form">
-    <form action="#" th:action="@{/service/edit}" th:object="${service}"
+    <form action="#" th:action="@{/service/edit}" th:object="${serviceDto}"
           method="POST" novalidate="novalidate">
         <div>
-            <label>Id</label>
             <input type="text" th:field="*{serviceId}" class="input" hidden/>
         </div>
         <div>
@@ -53,20 +52,20 @@
             <p th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></p>
         </div>
         <div>
+            <label>Service Type</label>
+            <select th:field="*{serviceType}">
+                <option th:value="null" selected >Choose option</option>
+                <option th:each="item:${serviceType}" th:value="${item.serviceTypeId}"  th:text="${item.serviceTypeName}"></option>
+            </select>
+            <p th:if="${#fields.hasErrors('serviceType')}" th:errors="*{serviceType}"></p>
+        </div>
+        <div>
             <label>Rent Type</label>
             <select th:field="*{rentType}">
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${rentType}" th:value="${item.rentTypeId}"  th:text="${item.rentTypeName}"></option>
             </select>
             <p th:if="${#fields.hasErrors('rentType')}" th:errors="*{rentType}"></p>
-        </div>
-        <div>
-            <label>Service Type</label>
-            <select th:field="*{serviceType}">
-                <option th:value="null" selected >Choose option</option>
-                <option th:each="item:${typeService}" th:value="${item.serviceTypeId}"  th:text="${item.serviceTypeName}"></option>
-            </select>
-            <p th:if="${#fields.hasErrors('serviceType')}" th:errors="*{serviceType}"></p>
         </div>
         <input type="submit" value="Save"/>
     </form>

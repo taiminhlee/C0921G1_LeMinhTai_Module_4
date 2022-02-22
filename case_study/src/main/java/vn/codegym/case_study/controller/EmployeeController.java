@@ -9,18 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.case_study.dto.EmployeeDto;
 import vn.codegym.case_study.model.Employee;
-import vn.codegym.case_study.model.Position;
 import vn.codegym.case_study.service.division.IDivisionService;
 import vn.codegym.case_study.service.education_degree.IEducationDegreeService;
 import vn.codegym.case_study.service.employee.IEmployeeService;
 import vn.codegym.case_study.service.position.IPositionService;
-import vn.codegym.case_study.service.position.PositionService;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -74,7 +70,6 @@ public class EmployeeController {
         } else {
             Employee employee = new Employee();
             BeanUtils.copyProperties(employeeDto, employee);
-            employee.setEmployeeStatus("1");
             employeeService.save(employee);
             redirectAttributes.addFlashAttribute("smg","Create Success");
             return "redirect:/employee";
@@ -91,7 +86,7 @@ public class EmployeeController {
 
     @GetMapping("/edit/{id}")
     public String showEdit(Model model, @PathVariable Long id){
-        model.addAttribute("employee",employeeService.findById(id).get());
+        model.addAttribute("employeeDto",employeeService.findById(id).get());
         model.addAttribute("position",positionService.findAll());
         model.addAttribute("division",divisionService.findAll());
         model.addAttribute("education",educationDegreeService.findAll());
@@ -99,11 +94,21 @@ public class EmployeeController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute Employee employee, RedirectAttributes redirectAttributes){
-        employee.setEmployeeStatus("1");
-        employeeService.save(employee);
-        redirectAttributes.addFlashAttribute("smg","success edit");
-        return "redirect:/employee";
+    public String edit(@ModelAttribute @Validated EmployeeDto employeeDto,
+                         BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+        new EmployeeDto().validate(employeeDto, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("position", positionService.findAll());
+            model.addAttribute("division", divisionService.findAll());
+            model.addAttribute("education", educationDegreeService.findAll());
+            return "employee/edit";
+        } else {
+            Employee employee = new Employee();
+            BeanUtils.copyProperties(employeeDto, employee);
+            employeeService.save(employee);
+            redirectAttributes.addFlashAttribute("smg","Edit Success");
+            return "redirect:/employee";
+        }
     }
 
     @GetMapping("/view/{id}")

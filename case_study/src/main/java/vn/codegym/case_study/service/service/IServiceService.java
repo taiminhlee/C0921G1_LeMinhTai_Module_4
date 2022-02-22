@@ -13,5 +13,6 @@ public interface IServiceService {
     void create(vn.codegym.case_study.model.Service service);
     Iterable<String> listServiceId();
     List<vn.codegym.case_study.model.Service> findAll();
-    Optional<vn.codegym.case_study.model.Service> viewService(@Param("id") String id);
+    Optional<vn.codegym.case_study.model.Service> findById(String id);
+    void delete(vn.codegym.case_study.model.Service service);
 }

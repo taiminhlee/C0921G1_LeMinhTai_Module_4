@@ -1,5 +1,6 @@
 package vn.codegym.case_study.controller;
 
+import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import vn.codegym.case_study.service.service.IServiceService;
 import vn.codegym.case_study.service.service_type.IServiceTypeService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/service")
 @Controller
@@ -58,8 +60,10 @@ public class ServiceController {
 
     @GetMapping("/edit/{id}")
     public String showEdit(@PathVariable String id,Model model){
-        if (serviceService.viewService(id).isPresent()){
-            model.addAttribute("service",serviceService.viewService(id).get());
+        if (serviceService.findById(id).isPresent()){
+            model.addAttribute("serviceDto",serviceService.findById(id).get());
+            model.addAttribute("serviceType", serviceTypeService.findAll());
+            model.addAttribute("rentType", rentTypeService.findAll());
             return "service/edit";
         }
        return "customer/customerUsing";
@@ -79,5 +83,16 @@ public class ServiceController {
             redirectAttributes.addFlashAttribute("smg","Edit Success");
             return "redirect:/customer/using";
         }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable String id,RedirectAttributes redirectAttributes){
+        Optional<Service> serviceOption=serviceService.findById(id);
+        if (serviceOption.isPresent()){
+            serviceService.delete(serviceOption.get());
+            redirectAttributes.addFlashAttribute("smg","Delete success");
+            return "redirect:/customer/using";
+        }
+        return "/customer/customerUsing";
     }
 }

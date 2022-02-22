@@ -13,10 +13,4 @@ import java.util.Optional;
 public interface IServiceRepository extends JpaRepository<Service,String> {
     @Query(value="select service_id from service", nativeQuery=true)
     Iterable<String> listServiceId();
-
-    @Query(value="select * from service\n" +
-            "inner join contract on service.service_id=contract.service_id\n" +
-            "left join customer on customer.customer_id=contract.customer_id\n" +
-            "where  customer.customer_id = :id",nativeQuery=true)
-    Optional<Service> viewService(@Param("id") String id);
 }

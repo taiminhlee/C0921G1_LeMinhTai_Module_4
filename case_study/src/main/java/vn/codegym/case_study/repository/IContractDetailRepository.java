@@ -16,6 +16,6 @@ public interface IContractDetailRepository extends JpaRepository<ContractDetail,
             "inner join customer c on c.customer_id=con.customer_id\n" +
             "inner join attach_service as att on cond.attach_service_id=att.attach_service_id\n" +
             "inner join service as ser on ser.service_id=con.service_id\n" +
-            "where c.customer_status=1 and c.customer_name like %:name% and att.attach_service_name like %:service%",nativeQuery=true)
+            "where c.customer_status=1 and ser.service_status=1 and c.customer_name like %:name% and att.attach_service_name like %:service%",nativeQuery=true)
     Page<ContractDetail> customerUsing(@Param("name") String name, @Param("service") String service, Pageable pageable);
 }
