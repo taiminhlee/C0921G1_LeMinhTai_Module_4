@@ -1,9 +1,13 @@
-package vn.codegym.case_study.model;
+package vn.codegym.case_study.security;
 
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import vn.codegym.case_study.model.Employee;
+import vn.codegym.case_study.model.Role;
+import vn.codegym.case_study.model.User;
+import vn.codegym.case_study.repository.IEmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,5 +58,9 @@ public class MyUserDetail implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getNameEmployee(){
+        return user.getEmployee().getEmployeeName();
     }
 }

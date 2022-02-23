@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import vn.codegym.case_study.service.my_user_detail.MyUserDetailService;
+import vn.codegym.case_study.security.MyUserDetailService;
 
 @Configuration
 @EnableWebSecurity
@@ -36,14 +36,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/").permitAll() //Khi login bằng URL /login thì khi thành công sẽ vào '/student
+                .defaultSuccessUrl("/").permitAll() //Khi login bằng URL /login thì khi thành công sẽ vào '/home
                 .and()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/").permitAll() //không cần xác minh
+                .antMatchers(  "/**/*.JPG", "/**/*.gif","/**/*.jpeg","/**/*.png").permitAll() /*không cần xác thực.*/
                 .antMatchers("/customer/**","/customer").hasRole("EMP")
                 .antMatchers("/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .and().logout().logoutSuccessUrl("/");
+                .and().logout().logoutSuccessUrl("/"); // logout thành công quay lại trang chủ
 
         /*Cấu hình remember me*/
         http.authorizeRequests().and().rememberMe()

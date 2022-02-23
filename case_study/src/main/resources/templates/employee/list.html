@@ -26,7 +26,7 @@
             <option disabled selected>Choose Education Degree</option>
             <option th:each="item : ${education}" th:value="${item.educationDegreeId}" th:text="${item.educationDegreeName}"></option>
         </select>
-        <button type="submit">Search</button>
+        <button class="big-button" type="submit">Search</button>
     </form>
 </div>
 <a href="/employee/create">Create new employee</a>
@@ -109,7 +109,7 @@
             </div>
             <div class="card-text modal-body">
 
-            </div> <button class="btn">Cancel</button>
+            </div> <button class="cancel">Cancel</button>
         </div>
     </div>
 </div>

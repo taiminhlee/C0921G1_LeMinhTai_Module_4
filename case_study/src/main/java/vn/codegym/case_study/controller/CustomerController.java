@@ -35,7 +35,7 @@ public class CustomerController {
     @Autowired
    private IContractDetailService contractDetailService;
 
-    @GetMapping("")
+    @GetMapping()
     public String list(@PageableDefault(value = 5) Pageable pageable,
                        Model model, Optional<String> name, Optional<Long> customerTypeId){
         model.addAttribute("customerType",customerTypeService.findAll());

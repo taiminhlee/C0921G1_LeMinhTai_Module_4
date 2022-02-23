@@ -25,4 +25,5 @@ public interface IEmployeeRepository extends JpaRepository<Employee,Long> {
     Page<Employee> search(@Param("name") String name,@Param("position_id") String positionId,
                           @Param("division_id") String divisionId, @Param("education_degree_id")
                           String educationDegreeId, Pageable pageable);
+
 }

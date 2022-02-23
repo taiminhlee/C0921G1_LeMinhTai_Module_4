@@ -14,7 +14,7 @@
         <div>
             <label>Quantity</label>
             <input type="text" th:field="*{quantity}" class="input"/>
-            <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+            <p class="error" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
         </div>
         <div>
             <label>Contract: </label>
@@ -23,7 +23,7 @@
                 <option th:each="item:${contract}" th:value="${item.contractId}"
                         th:text="${item.contractId}+': '+${item.employee.employeeName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('contract')}" th:errors="*{contract}"></p>
+            <p class="error" th:if="${#fields.hasErrors('contract')}" th:errors="*{contract}"></p>
         </div>
         <div>
             <label>Attach Service: </label>
@@ -31,7 +31,7 @@
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${attachService}" th:value="${item.attachServiceId}" th:text="${item.attachServiceName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('attachService')}" th:errors="*{attachService}"></p>
+            <p class="error" th:if="${#fields.hasErrors('attachService')}" th:errors="*{attachService}"></p>
         </div>
         <input type="submit" value="Create"/>
     </form>

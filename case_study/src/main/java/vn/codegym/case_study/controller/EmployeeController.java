@@ -12,24 +12,31 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.case_study.dto.EmployeeDto;
 import vn.codegym.case_study.model.Employee;
+import vn.codegym.case_study.model.Role;
+import vn.codegym.case_study.model.User;
 import vn.codegym.case_study.service.division.IDivisionService;
 import vn.codegym.case_study.service.education_degree.IEducationDegreeService;
 import vn.codegym.case_study.service.employee.IEmployeeService;
 import vn.codegym.case_study.service.position.IPositionService;
+import vn.codegym.case_study.service.user.IUserService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
     @Autowired
-    IEmployeeService employeeService;
+   private IEmployeeService employeeService;
     @Autowired
-    IPositionService positionService;
+    private  IPositionService positionService;
     @Autowired
-    IDivisionService divisionService;
+    private IDivisionService divisionService;
     @Autowired
-    IEducationDegreeService educationDegreeService;
+    private IEducationDegreeService educationDegreeService;
+    @Autowired
+    private IUserService userService;
 
 
     @GetMapping
@@ -70,6 +77,23 @@ public class EmployeeController {
         } else {
             Employee employee = new Employee();
             BeanUtils.copyProperties(employeeDto, employee);
+            if (employee.getPosition().getPositionId()==5 || employee.getPosition().getPositionId()==6){
+                Role role=new Role(2,"ROLE_ADMIN");
+                Role role1=new Role(1,"ROLE_EMP");
+                List<Role> roleList=new ArrayList<>();
+                roleList.add(role);
+                roleList.add(role1);
+                User user=employee.getUser();
+                user.setRoles(roleList);
+                userService.save(user);
+            }else {
+                Role role1=new Role(1,"ROLE_EMP");
+                List<Role> roleList=new ArrayList<>();
+                roleList.add(role1);
+                User user=employee.getUser();
+                user.setRoles(roleList);
+                userService.save(user);
+            }
             employeeService.save(employee);
             redirectAttributes.addFlashAttribute("smg","Create Success");
             return "redirect:/employee";

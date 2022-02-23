@@ -14,22 +14,22 @@
         <div>
             <label>Start Date</label>
             <input type="date" th:field="*{contractStartDate}" class="input"/>
-            <p th:if="${#fields.hasErrors('contractStartDate')}" th:errors="*{contractStartDate}"></p>
+            <p class="error" th:if="${#fields.hasErrors('contractStartDate')}" th:errors="*{contractStartDate}"></p>
         </div>
         <div>
             <label>End Date</label>
             <input type="date" th:field="*{contractEndDate}" class="input"/>
-            <p th:if="${#fields.hasErrors('contractEndDate')}" th:errors="*{contractEndDate}"></p>
+            <p class="error" th:if="${#fields.hasErrors('contractEndDate')}" th:errors="*{contractEndDate}"></p>
         </div>
         <div>
             <label>Deposit</label>
             <input type="text" th:field="*{contractDeposit}" class="input"/>
-            <p th:if="${#fields.hasErrors('contractDeposit')}" th:errors="*{contractDeposit}"></p>
+            <p class="error" th:if="${#fields.hasErrors('contractDeposit')}" th:errors="*{contractDeposit}"></p>
         </div>
         <div>
             <label>Total Money</label>
             <input type="text" th:field="*{contractTotalMoney}" class="input"/>
-            <p th:if="${#fields.hasErrors('contractTotalMoney')}" th:errors="*{contractTotalMoney}"></p>
+            <p class="error" th:if="${#fields.hasErrors('contractTotalMoney')}" th:errors="*{contractTotalMoney}"></p>
         </div>
         <div>
             <label>Employee: </label>
@@ -37,7 +37,7 @@
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${employee}" th:value="${item.employeeId}"  th:text="${item.employeeName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}"></p>
+            <p class="error" th:if="${#fields.hasErrors('employee')}" th:errors="*{employee}"></p>
         </div>
         <div>
             <label>Service: </label>
@@ -45,7 +45,7 @@
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${service}" th:value="${item.serviceId}"  th:text="${item.serviceName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('service')}" th:errors="*{service}"></p>
+            <p class="error" th:if="${#fields.hasErrors('service')}" th:errors="*{service}"></p>
         </div>
         <div>
             <label>Customer: </label>
@@ -53,7 +53,7 @@
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${customer}" th:value="${item.customerId}"  th:text="${item.customerName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}"></p>
+            <p class="error" th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}"></p>
         </div>
         <input type="submit" value="Create"/>
     </form>

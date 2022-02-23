@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
     <style>
-        a{
+        a {
             text-decoration: none;
         }
-        img{
+
+        img {
             width: 20%;
             height: 30%;
         }
-        h3{background-color: blue; color: white; padding: 10px 0 10px 20px;}
-        footer{margin: 10px 0;}
+
+        h3 {
+            background-color: blue;
+            color: white;
+            padding: 10px 0 10px 20px;
+        }
+
+        footer {
+            margin: 10px 0;
+        }
 
         #table {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -27,9 +40,13 @@
             padding: 8px;
         }
 
-        #table tr:nth-child(even){background-color: #f2f2f2;}
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #table tr:hover {background-color: #ddd;}
+        #table tr:hover {
+            background-color: #ddd;
+        }
 
         #table th {
             padding-top: 12px;
@@ -39,7 +56,7 @@
             color: white;
         }
 
-        .input[type=text], .input[type=date]{
+        .input[type=text], .input[type=date] {
             width: 100%;
             padding: 12px 0px;
             margin: 8px 0;
@@ -54,18 +71,20 @@
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
-            margin: 8px 0;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             text-align: center;
+            position: absolute;
+            margin: 8px 13%;
         }
 
         input[type=submit]:hover {
             background-color: #45a049;
         }
 
-        #form {
+        .form {
+            position: relative;
             width: 500px;
             border-radius: 5px;
             background-color: #f2f2f2;
@@ -73,12 +92,21 @@
             margin-left: 450px;
         }
 
-        .notify span{font-size: 15px; color: green;}
+        .notify span {
+            font-size: 15px;
+            color: green;
+        }
 
-        a{text-decoration: none}
-        p{color: red;
+        a {
+            text-decoration: none
+        }
+
+        .error {
+            color: red;
             margin-bottom: 10px;
-            font-size: 10pt}
+            font-size: 10pt
+        }
+
         @import url(https://fonts.googleapis.com/css?family=Calibri:400,300,700);
 
 
@@ -105,7 +133,7 @@
             box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19)
         }
 
-        @media(max-width:767px) {
+        @media (max-width: 767px) {
             .card {
                 width: 90vw
             }
@@ -139,7 +167,7 @@
             font-weight: lighter
         }
 
-        .btn {
+        .cancel {
             width: 100%;
             background-color: rgb(29, 226, 226);
             border-color: rgb(29, 226, 226);
@@ -148,7 +176,7 @@
             font-size: 20px
         }
 
-        .btn:focus {
+        .cancel:focus {
             box-shadow: none;
             outline: none;
             box-shadow: none;
@@ -158,30 +186,175 @@
             transition: none
         }
 
-        .btn:hover {
+        .cancel:hover {
             color: white
+        }
+
+        .purple:hover {
+            color: #b971f0;
+            text-shadow: 0px 0px 10px #b971f0;
+        }
+        .noselect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btnLogin {
+            width: 150px;
+            height: 50px;
+            cursor: pointer;
+            background: #212529;
+            border: midnightblue;
+            border-radius: 10px;
+            /*box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;*/
+            color: #333;
+            font-size: 17px;
+            padding: 1px 2px;
+        }
+
+       .btnLogin:hover {
+            box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
+            font-size: 15px;
+            transition: 500ms;
+        }
+
+        .btnLogin:focus {
+            outline: none;
+        }
+
+        .navbar{
+            /*max-height: 52px;*/
+            background: #212529;
+            position: relative;
+        }
+
+        .big-button {
+            padding: 1em 2em;
+            border: 2px solid var(--colorShadeA);
+            border-radius: 1em;
+            background: var(--colorShadeE);
+            transform-style: preserve-3d;
+            transition: all 175ms cubic-bezier(0, 0, 1, 1);
+        }
+        .big-button::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--colorShadeC);
+            border-radius: inherit;
+            box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+            transform: translate3d(0, 0.75em, -1em);
+            transition: all 175ms cubic-bezier(0, 0, 1, 1);
+        }
+
+        .big-button:hover {
+            background: var(--colorShadeD);
+            transform: translate(0, 0.375em);
+        }
+
+        .big-button:hover::before {
+            transform: translate3d(0, 0.75em, -1em);
+        }
+
+        .big-button:active {
+            transform: translate(0em, 0.75em);
+        }
+
+        .big-button:active::before {
+            transform: translate3d(0, 0, -1em);
+
+            box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+        }
+
+        :root {
+            --backgroundColor: rgba(246, 241, 209);
+            --colorShadeA: rgb(106, 163, 137);
+            --colorShadeB: rgb(121, 186, 156);
+            --colorShadeC: rgb(150, 232, 195);
+            --colorShadeD: rgb(187, 232, 211);
+            --colorShadeE: rgb(205, 255, 232);
+        }
+
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+        * {
+            box-sizing: border-box;
+        }
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body#home{
+            margin-top: 30px;
+            z-index: 1;
+            background: url("../DSC_2661.JPG") top left/cover no-repeat;
+        }
+        .text-center{
+            width: 100%;
+            background-color: #212529;
+            position: absolute;
+            top: 89%;
         }
     </style>
 </head>
 <body>
-<nav class="site-header sticky-top" th:fragment="header">
-    <div class="container-fluid d-flex bg-dark mb-3">
-            <a class="py-2" href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-            </a>
-        <div class="mx-4">
-            <a class="py-2 d-none d-md-inline-block" href="/customer">Customer</a>
-        </div>
-        <div class="mx-4">
-            <a class="py-2 d-none d-md-inline-block" href="/employee">Employee</a>
-        </div>
-        <div class="mx-4">
-            <a class="py-2 d-none d-md-inline-block" href="/service">Create Service</a>
-        </div>
-        <div class="mx-4">
-            <a class="py-2 d-none d-md-inline-block" href="/contract">Create Contract</a>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark" th:fragment="header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <button  class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple text-white" href="/">HOME</a></button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03" style="width: 100%">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+            <li class="nav-item">
+                <button  class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple" href="/customer">Customer</a></button>
+            </li>
+            <li class="nav-item">
+                <button  class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple" href="/employee">Employee</a></button>
+            </li>
+            <li class="nav-item">
+                <button  class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple" href="/service">Service</a></button>
+            </li>
+            <li class="nav-item">
+                <button  class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple" href="/contract">Contract</a></button>
+            </li>
+            <li class="nav-item">
+                <button  class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple" href="/contractDetail">Contract Detail</a></button>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" style="position: relative; left:12%">
+            <div sec:authorize="anonymous">
+                    <button  class="noselect btnLogin"><a th:href="@{/login}" class="purple">Login</a></button>
+            </div>
+            <div style=" width: max-content; display: inline-flex" sec:authorize="isAuthenticated()">
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <div class="">
+                            <span class="text-white fs-6 text">Xin chào <span
+                                    sec:authentication="principal.nameEmployee"></span>!</span>
+                            <button class="noselect btnLogin"> <a class="py-2 d-none d-md-inline-block purple" href="/logout">Logout</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </nav>
+<footer th:fragment="footer" class="bg-dark text-center text-white">
+    <div class="text-center p-3">
+        © 2022 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+</footer>
 </body>
 </html>

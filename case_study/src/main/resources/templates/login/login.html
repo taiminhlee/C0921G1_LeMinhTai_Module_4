@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -197,8 +198,11 @@
                     <i class="login__icon fas fa-lock"></i>
                     <input type="password" class="login__input" placeholder="Password" name="password">
                 </div>
+                <div class="">
+                    <p style="color: red" th:if="${!param.isEmpty()}">User name or password not correct</p>
+                </div>
                 <div class="login__field">
-                    <input type="checkbox" name="remember-me">Remember Me
+                    <input type="checkbox" name="remember-me"> Remember Me
                 </div>
                 <button class="button login__submit" type="submit" value="login">
                     <span class="button__text">Log In Now</span>

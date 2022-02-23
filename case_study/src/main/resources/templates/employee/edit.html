@@ -14,7 +14,7 @@
         <div>
             <label>Birthday</label>
             <input type="date" th:field="*{employeeBirthday}" class="input"/>
-            <p th:if="${#fields.hasErrors('employeeBirthday')}" th:errors="*{employeeBirthday}"></p>
+            <p class="error" th:if="${#fields.hasErrors('employeeBirthday')}" th:errors="*{employeeBirthday}"></p>
         </div>
         <div>
             <label>Salary</label>
@@ -23,17 +23,17 @@
         <div>
             <label>Id Card</label>
             <input type="text" th:field="*{employeeIdCard}" class="input"/>
-            <p th:if="${#fields.hasErrors('employeeIdCard')}" th:errors="*{employeeIdCard}"></p>
+            <p class="error" th:if="${#fields.hasErrors('employeeIdCard')}" th:errors="*{employeeIdCard}"></p>
         </div>
         <div>
             <label>Phone</label>
             <input type="text" th:field="*{employeePhone}" class="input"/>
-            <p th:if="${#fields.hasErrors('employeePhone')}" th:errors="*{employeePhone}"></p>
+            <p class="error" th:if="${#fields.hasErrors('employeePhone')}" th:errors="*{employeePhone}"></p>
         </div>
         <div>
             <label>Email</label>
             <input type="text" th:field="*{employeeEmail}" class="input"/>
-            <p th:if="${#fields.hasErrors('employeeEmail')}" th:errors="*{employeeEmail}"></p>
+            <p class="error" th:if="${#fields.hasErrors('employeeEmail')}" th:errors="*{employeeEmail}"></p>
         </div>
         <div>
             <label>Address</label>
@@ -44,21 +44,21 @@
             <select th:field="*{division}">
                 <option th:each="item:${division}" th:value="${item.divisionId}"  th:text="${item.divisionName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('division')}" th:errors="*{division}"></p>
+            <p class="error" th:if="${#fields.hasErrors('division')}" th:errors="*{division}"></p>
         </div>
         <div>
             <label>Education Degree</label>
             <select th:field="*{educationDegree}">
                 <option th:each="item:${education}" th:value="${item.educationDegreeId}"  th:text="${item.educationDegreeName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('educationDegree')}" th:errors="*{educationDegree}"></p>
+            <p class="error" th:if="${#fields.hasErrors('educationDegree')}" th:errors="*{educationDegree}"></p>
         </div>
         <div>
             <label>Position</label>
             <select th:field="*{position}" class="input">
                 <option th:each="item:${position}" th:value="${item.positionId}" th:text="${item.positionName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></p>
+            <p class="error" th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></p>
         </div>
         <input type="submit" value="Edit"/>
     </form>

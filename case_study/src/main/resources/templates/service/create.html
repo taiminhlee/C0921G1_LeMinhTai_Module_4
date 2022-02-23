@@ -14,8 +14,8 @@
         <div>
             <label>Id</label>
             <input type="text" th:field="*{serviceId}" class="input"/>
-            <p th:if="${#fields.hasErrors('serviceId')}" th:errors="*{serviceId}"></p>
-            <p th:if="${error}" th:text="${error}"></p>
+            <p class="error" th:if="${#fields.hasErrors('serviceId')}" th:errors="*{serviceId}"></p>
+            <p class="error" th:if="${error}" th:text="${error}"></p>
         </div>
         <div>
             <label>Name</label>
@@ -24,17 +24,17 @@
         <div>
             <label>Area</label>
             <input type="text" th:field="*{serviceArea}" class="input"/>
-            <p th:if="${#fields.hasErrors('serviceArea')}" th:errors="*{serviceArea}"></p>
+            <p class="error" th:if="${#fields.hasErrors('serviceArea')}" th:errors="*{serviceArea}"></p>
         </div>
         <div>
             <label>Cost</label>
             <input type="text" th:field="*{serviceCost}" class="input"/>
-            <p th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></p>
+            <p class="error" th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></p>
         </div>
         <div>
             <label>Max people</label>
             <input type="text" th:field="*{serviceMaxPeople}" class="input"/>
-            <p th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></p>
+            <p class="error" th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></p>
         </div>
         <div>
             <label>Standard Room</label>
@@ -47,12 +47,12 @@
         <div>
             <label>Pool Area</label>
             <input type="text" th:field="*{poolArea}" class="input"/>
-            <p th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></p>
+            <p class="error" th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></p>
         </div>
         <div>
             <label>Number of floors</label>
             <input type="text" th:field="*{numberOfFloors}" class="input"/>
-            <p th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></p>
+            <p class="error" th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></p>
         </div>
         <div>
             <label>Rent Type</label>
@@ -60,7 +60,7 @@
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${rentType}" th:value="${item.rentTypeId}"  th:text="${item.rentTypeName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('rentType')}" th:errors="*{rentType}"></p>
+            <p class="error" th:if="${#fields.hasErrors('rentType')}" th:errors="*{rentType}"></p>
         </div>
         <div>
             <label>Service Type</label>
@@ -68,7 +68,7 @@
                 <option th:value="null" selected >Choose option</option>
                 <option th:each="item:${typeService}" th:value="${item.serviceTypeId}"  th:text="${item.serviceTypeName}"></option>
             </select>
-            <p th:if="${#fields.hasErrors('serviceType')}" th:errors="*{serviceType}"></p>
+            <p class="error" th:if="${#fields.hasErrors('serviceType')}" th:errors="*{serviceType}"></p>
         </div>
         <input type="submit" value="Create"/>
     </form>
